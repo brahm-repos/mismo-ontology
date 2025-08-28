@@ -1,0 +1,13 @@
+Generate python code tht reads the file  dataextracted_*.josn and 
+applies the loan-document-ontology.ttl and genertes the instances/individuals.
+
+Field "MismoContainerName" represents the document type
+Field "fieldName" represetns the extracted document field name from the document referred in 
+field ""MismoContainerName"
+
+Field "value" represents the value of the field name belonging to document referred in field 
+"MismoContainerName"
+
+Based on the type of the value, add the appropriate data type
+
+

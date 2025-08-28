@@ -1,0 +1,4695 @@
+[
+  {
+    "type": "Loan",
+    "id": "Loan_333_888_999_123321",
+    "properties": {
+      "loanIdentifier": "333_888_999_123321"
+    }
+  },
+  {
+    "type": "DocumentType",
+    "id": "DocType_1_Commercial_Promissory_Note",
+    "properties": {
+      "documentTypeName": "Commercial Promissory Note"
+    }
+  },
+  {
+    "type": "Document",
+    "id": "Doc_1_Commercial_Promissory_Note",
+    "properties": {
+      "documentIdentifier": "DOC_1",
+      "belongsToLoan": "Loan_333_888_999_123321",
+      "hasDocumentType": "DocType_1_Commercial_Promissory_Note"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_1_Adjustment_Change_Effective_Due_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_2_Adjustment_Change_Index_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_3_Adjustment_Change_Interest_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_4_Adjustment_Change_Occurrence_Extended_Term_Months_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_5_Adjustment_Change_Occurrence_Pass_Through_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_6_Adjustment_Change_Occurrence_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_7_Adjustment_Change_Occurrence_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_8_Adjustment_Change_Principal_And_Interest_Payment_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_9_Adjustment_Change_Projected_Principal_Balance_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_10_Adjustment_Change_Service_Fee_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_11_Adjustment_Change_Service_Fee_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_12_Adjustment_Rule_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_13_No_Interest_Rate_Caps_Feature_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_14_Payments_Between_Rate_Change_Notices_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_15_Payments_To_First_Interest_Rate_Value_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_16_Per_Change_Ceiling_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_17_Per_Change_Factor_Of_Index_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_18_Per_Change_Floor_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_19_Per_Change_Interest_Rate_Rounding_Timing_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_20_Per_Change_Maximum_Decrease_Rate_Percent",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_21_Per_Change_Maximum_Increase_Rate_Percent",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_22_Per_Change_Minimum_Decrease_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_23_Per_Change_Minimum_Increase_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_24_Per_Change_Rate_Adjustment_Calculation_Method_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_25_Per_Change_Rate_Adjustment_Effective_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_26_Per_Change_Rate_Adjustment_Effective_Months_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_27_Per_Change_Rate_Adjustment_Frequency_Months_Count",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_28_Per_Change_Rate_Adjustment_Payments_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_29_Advance_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_30_Allonge_To_Note_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_31_Allonge_To_Note_Executed_By_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_32_Allonge_To_Note_In_Favor_Of_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_33_Allonge_To_Note_Pay_To_The_Order_Of_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_34_Allonge_To_Note_Without_Recourse_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_35_Amortization_Schedule_Ending_Balance_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_36_Amortization_Schedule_Interest_Portion_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_37_Amortization_Schedule_Interest_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_38_Amortization_Schedule_Loan_To_Value_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_39_Amortization_Schedule_MI_Payment_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_40_Amortization_Schedule_Payment_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_41_Amortization_Schedule_Payment_Due_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_42_Amortization_Schedule_Payment_Number",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_43_Amortization_Schedule_Principal_Portion_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_44_Amortization_Schedule_USDA_Annual_Fee_Payment_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_45_Amortization_Type",
+    "properties": {
+      "fieldValue": "Adjustable Rate Note",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_46_Amortization_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_47_Loan_Amortization_Maximum_Term_Months_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_48_Loan_Amortization_Period_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_49_Loan_Amortization_Period_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_50_Automobiles_Owned_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_51_Borrower_Age_At_Application_Years_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_52_Borrower_Application_Signed_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_53_Borrower_Bankruptcy_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_54_Borrower_Birth_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_55_Borrower_Characteristic_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_56_Borrower_Characteristic_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_57_Borrower_Classification_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_58_Borrower_Death_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_59_Borrower_Is_An_Individual_Person_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_60_Borrower_Mail_To_Address_Same_As_Property_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_61_Borrower_Qualifying_Income_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_62_Borrower_Relationship_Title_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_63_Borrower_Relationship_Title_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_64_Borrower_Same_As_Builder_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_65_Borrower_Total_Mortgaged_Properties_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_66_Community_Property_State_Resident_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_67_Credit_File_Borrower_Age_Years_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_68_Credit_Report_Authorization_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_69_Credit_Report_Identifier",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_70_Dependent_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_71_Domestic_Relationship_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_72_Domestic_Relationship_State_Code",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_73_Domestic_Relationship_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_74_Domestic_Relationship_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_75_Employment_State_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_76_Employment_State_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_77_Employment_Verification_Level_Code",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_78_Housing_Counseling_Required_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_79_Income_Verification_Level_Code",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_80_Intent_To_Proceed_With_Loan_Transaction_Indicated_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_81_Joint_Asset_Liability_Reporting_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_82_Marital_Status_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_83_Marital_Status_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_84_Military_Lending_Act_Covered_Borrower_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_85_Schooling_Years_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_86_Self_Declared_Military_Service_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_87_Signed_Authorization_To_Request_Tax_Records_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_88_Spousal_VA_Benefits_Eligibility_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_89_Tax_Records_Obtained_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_90_Automobiles_Owned_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_91_Borrower_Age_At_Application_Years_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_92_Borrower_Application_Signed_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_93_Borrower_Bankruptcy_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_94_Borrower_Birth_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_95_Borrower_Characteristic_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_96_Borrower_Characteristic_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_97_Borrower_Classification_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_98_Borrower_Death_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_99_Borrower_Is_An_Individual_Person_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_100_Borrower_Mail_To_Address_Same_As_Property_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_101_Borrower_Qualifying_Income_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_102_Borrower_Relationship_Title_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_103_Borrower_Relationship_Title_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_104_Borrower_Same_As_Builder_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_105_Borrower_Total_Mortgaged_Properties_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_106_Community_Property_State_Resident_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_107_Credit_File_Borrower_Age_Years_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_108_Credit_Report_Authorization_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_109_Credit_Report_Identifier",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_110_Dependent_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_111_Domestic_Relationship_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_112_Domestic_Relationship_State_Code",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_113_Domestic_Relationship_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_114_Domestic_Relationship_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_115_Employment_State_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_116_Employment_State_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_117_Employment_Verification_Level_Code",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_118_Housing_Counseling_Required_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_119_Income_Verification_Level_Code",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_120_Intent_To_Proceed_With_Loan_Transaction_Indicated_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_121_Joint_Asset_Liability_Reporting_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_122_Marital_Status_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_123_Marital_Status_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_124_Military_Lending_Act_Covered_Borrower_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_125_Schooling_Years_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_126_Self_Declared_Military_Service_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_127_Signed_Authorization_To_Request_Tax_Records_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_128_Spousal_VA_Benefits_Eligibility_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_129_Tax_Records_Obtained_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_130_Automobiles_Owned_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_131_Borrower_Age_At_Application_Years_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_132_Borrower_Application_Signed_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_133_Borrower_Bankruptcy_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_134_Borrower_Birth_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_135_Borrower_Characteristic_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_136_Borrower_Characteristic_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_137_Borrower_Classification_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_138_Borrower_Death_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_139_Borrower_Is_An_Individual_Person_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_140_Borrower_Mail_To_Address_Same_As_Property_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_141_Borrower_Qualifying_Income_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_142_Borrower_Relationship_Title_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_143_Borrower_Relationship_Title_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_144_Borrower_Same_As_Builder_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_145_Borrower_Total_Mortgaged_Properties_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_146_Community_Property_State_Resident_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_147_Credit_File_Borrower_Age_Years_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_148_Credit_Report_Authorization_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_149_Credit_Report_Identifier",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_150_Dependent_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_151_Domestic_Relationship_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_152_Domestic_Relationship_State_Code",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_153_Domestic_Relationship_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_154_Domestic_Relationship_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_155_Employment_State_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_156_Employment_State_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_157_Employment_Verification_Level_Code",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_158_Housing_Counseling_Required_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_159_Income_Verification_Level_Code",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_160_Intent_To_Proceed_With_Loan_Transaction_Indicated_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_161_Joint_Asset_Liability_Reporting_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_162_Marital_Status_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_163_Marital_Status_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_164_Military_Lending_Act_Covered_Borrower_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_165_Schooling_Years_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_166_Self_Declared_Military_Service_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_167_Signed_Authorization_To_Request_Tax_Records_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_168_Spousal_VA_Benefits_Eligibility_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_169_Tax_Records_Obtained_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_170_Automobiles_Owned_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_171_Borrower_Age_At_Application_Years_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_172_Borrower_Application_Signed_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_173_Borrower_Bankruptcy_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_174_Borrower_Birth_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_175_Borrower_Characteristic_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_176_Borrower_Characteristic_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_177_Borrower_Classification_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_178_Borrower_Death_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_179_Borrower_Is_An_Individual_Person_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_180_Borrower_Mail_To_Address_Same_As_Property_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_181_Borrower_Qualifying_Income_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_182_Borrower_Relationship_Title_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_183_Borrower_Relationship_Title_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_184_Borrower_Same_As_Builder_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_185_Borrower_Total_Mortgaged_Properties_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_186_Community_Property_State_Resident_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_187_Credit_File_Borrower_Age_Years_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_188_Credit_Report_Authorization_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_189_Credit_Report_Identifier",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_190_Dependent_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_191_Domestic_Relationship_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_192_Domestic_Relationship_State_Code",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_193_Domestic_Relationship_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_194_Domestic_Relationship_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_195_Employment_State_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_196_Employment_State_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_197_Employment_Verification_Level_Code",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_198_Housing_Counseling_Required_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_199_Income_Verification_Level_Code",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_200_Intent_To_Proceed_With_Loan_Transaction_Indicated_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_201_Joint_Asset_Liability_Reporting_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_202_Marital_Status_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_203_Marital_Status_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_204_Military_Lending_Act_Covered_Borrower_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_205_Schooling_Years_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_206_Self_Declared_Military_Service_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_207_Signed_Authorization_To_Request_Tax_Records_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_208_Spousal_VA_Benefits_Eligibility_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_209_Tax_Records_Obtained_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_210_Base_Loan_Amount",
+    "properties": {
+      "fieldValue": "$350,000.00",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "CurrencyField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_211_Borrower_Count",
+    "properties": {
+      "fieldValue": "2",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "NumericField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_212_Current_Interest_Rate_Percent",
+    "properties": {
+      "fieldValue": "7.990%",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "CurrencyField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_213_Initial_Fixed_Period_Effective_Months_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_214_Carryover_Rate_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_215_Ceiling_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_216_Ceiling_Rate_Percent_Earliest_Effective_Months_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_217_Deferred_Interest_Exclusion_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_218_First_Rate_Change_Months_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_219_First_Rate_Change_Payment_Effective_Date",
+    "properties": {
+      "fieldValue": "October 1, 2029",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "AlphanumericField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_220_Floor_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_221_Interest_Rate_Adjustment_Calculation_Method_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_222_Interest_Rate_Adjustment_Calculation_Method_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_223_Interest_Rate_Average_Value_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_224_Interest_Rate_Lifetime_Adjustment_Ceiling_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_225_Interest_Rate_Lifetime_Adjustment_Ceiling_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_226_Interest_Rate_Lifetime_Adjustment_Floor_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_227_Interest_Rate_Lifetime_Adjustment_Floor_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_228_Interest_Rate_Rounding_Percent",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_229_Interest_Rate_Rounding_Type",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_230_Interest_Rate_Truncated_Digits_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_231_Margin_Rate_Percent",
+    "properties": {
+      "fieldValue": "4.500%",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "CurrencyField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_232_Maximum_Decrease_Rate_Percent",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_233_Maximum_Increase_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_234_Payments_Between_Interest_Rate_Values_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_235_Payments_Between_Rate_Changes_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_236_Timely_Payment_Rate_Reduction_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_237_Total_Step_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_238_Lifetime_Maximum_Rate_(Ceiling)",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_239_Lifetime_Minimum_Rate_(Floor)",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_240_Initial_Interest_Rate_Cap_(Change_Up)",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_241_City_Name",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_242_Postal_Code",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_243_State_Name",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_244_Street_Name",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_245_City_Name",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_246_Postal_Code",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_247_State_Name",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_248_Street_Name",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_249_City_Name",
+    "properties": {
+      "fieldValue": "Snellville",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_250_Postal_Code",
+    "properties": {
+      "fieldValue": "30078",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "NumericField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_251_State_Name",
+    "properties": {
+      "fieldValue": "Georgia",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_252_Street_Name",
+    "properties": {
+      "fieldValue": "1936 BRIDGEWATER WALK, SNELLVILLE, GA 30078",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "AlphanumericField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_253_City_Name",
+    "properties": {
+      "fieldValue": "Snellville",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_254_Postal_Code",
+    "properties": {
+      "fieldValue": "30078",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "NumericField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_255_State_Name",
+    "properties": {
+      "fieldValue": "Georgia",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_256_Street_Name",
+    "properties": {
+      "fieldValue": "1936 BRIDGEWATER WALK, SNELLVILLE, GA 30078",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "AlphanumericField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_257_Closing_Adjustment_Item_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_258_Closing_Adjustment_Item_Paid_By_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_259_Closing_Adjustment_Item_Paid_Outside_Of_Closing_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_260_Closing_Adjustment_Item_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_261_Closing_Adjustment_Item_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_262_Closing_Adjustment_Paid_From_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_263_Closing_Adjustment_Paid_Through_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_264_Integrated_Disclosure_Line_Number_Value",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_265_Integrated_Disclosure_Section_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_266_Integrated_Disclosure_Section_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_267_Integrated_Disclosure_Subsection_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_268_Integrated_Disclosure_Subsection_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_269_Comparable_Adjustment_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_270_Comparable_Adjustment_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_271_Comparable_Adjustment_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_272_Comparable_Adjustment_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_273_Sales_Comparison_Unit_Of_Measure_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_274_Conversion_Date_Maximum_Extension_Months_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_275_Conversion_Maximum_Allowed_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_276_Conversion_Option_Duration_Months_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_277_Conversion_Option_Margin_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_278_Conversion_Option_Maximum_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_279_Conversion_Option_Minimum_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_280_Conversion_Option_Note_Term_Greater_Than_Fifteen_Years_Additional_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_281_Conversion_Option_Note_Term_Less_Than_Fifteen_Years_Additional_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_282_Conversion_Schedule_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_283_Conversion_Schedule_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_284_Conversion_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_285_Conversion_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_286_Conversion_Option_Period_Adjustment_Effective_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_287_Conversion_Option_Period_Demand_Notification_Frequency_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_288_Conversion_Option_Period_Expiration_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_289_Conversion_Option_Period_Fee_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_290_Conversion_Option_Period_Fee_Balance_Calculation_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_291_Conversion_Option_Period_Fee_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_292_Conversion_Option_Period_Reply_Days_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_293_Conversion_Option_Period_Rounding_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_294_Conversion_Option_Period_Rounding_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_295_Conversion_Option_Period_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_296_Conversion_Rate_Calculation_Method_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_297_Country_Of_Citizenship_Name",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_298_Notary_Certificate_Signer_Identification_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_299_SSN_Associations_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_300_Country_Of_Citizenship_Name",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_301_Notary_Certificate_Signer_Identification_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_302_SSN_Associations_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_303_Country_Of_Citizenship_Name",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_304_Notary_Certificate_Signer_Identification_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_305_SSN_Associations_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_306_Country_Of_Citizenship_Name",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_307_Notary_Certificate_Signer_Identification_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_308_SSN_Associations_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_309_Country_Of_Citizenship_Name",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_310_Notary_Certificate_Signer_Identification_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_311_SSN_Associations_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_312_Current_Monthly_Negative_Amortization_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_313_Current_Negative_Amortization_Balance_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_314_Final_Principal_And_Interest_Payment_Change_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_315_First_Principal_And_Interest_Payment_Change_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_316_First_Principal_And_Interest_Payment_Change_Months_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_317_GEM_Payoff_Years_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_318_GPM_And_GEM_Principal_And_Interest_Payment_Changes_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_319_GPM_Multiplier_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_320_Initial_Payment_Discount_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_321_Payment_Adjustment_Lifetime_Cap_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_322_Payment_Adjustment_Lifetime_Cap_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_323_Payments_Between_Principal_And_Interest_Payment_Changes_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_324_Principal_And_Interest_Calculation_Payment_Period_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_325_Principal_And_Interest_Calculation_Payment_Period_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_326_Principal_And_Interest_Payment_Decrease_Cap_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_327_Principal_And_Interest_Payment_Final_Recast_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_328_Principal_And_Interest_Payment_Final_Recast_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_329_Principal_And_Interest_Payment_Increase_Cap_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_330_Principal_And_Interest_Payment_Maximum_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_331_Principal_And_Interest_Payment_Maximum_Amount_Earliest_Effective_Months_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_332_Principal_And_Interest_Payment_Maximum_Decrease_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_333_Principal_And_Interest_Payment_Maximum_Extension_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_334_Principal_And_Interest_Payment_Minimum_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_335_Principal_Balance_Calculation_Method_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_336_First_Name",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_337_Last_Name",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_338_Middle_Name",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_339_First_Name",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_340_Last_Name",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_341_Middle_Name",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_342_First_Name",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_343_Last_Name",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_344_Middle_Name",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_345_First_Name",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_346_Last_Name",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_347_Middle_Name",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_348_First_Name",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_349_Last_Name",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_350_Middle_Name",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_351_Index_Lookback_Type",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_352_Index_Rounding_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_353_Index_Type",
+    "properties": {
+      "fieldValue": "30-day Average SOFR Index",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "AlphanumericField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_354_Index_Margin_Rounding_Override_Method",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_355_Initial_Payment_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_356_Initial_Principal_And_Interest_Payment_Amount",
+    "properties": {
+      "fieldValue": "$2,565.74",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "CurrencyField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_357_Scheduled_Annual_Payment_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_358_Scheduled_First_Payment_Date",
+    "properties": {
+      "fieldValue": "September 1, 2024",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "AlphanumericField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_359_Initial_Minimum_Payment_Reset_Period",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_360_Default_Rate_of_Additional_Interest",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_361_Subsequent_Payment_Reset_Period",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_362_Subsequent_Minimum_Payment_Reset_Period",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_363_Interest_Calculation_Basis_Days_In_Period_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_364_Late_Charge_Additional_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_365_Late_Charge_Amount",
+    "properties": {
+      "fieldValue": "5.000%",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "CurrencyField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_366_Late_Charge_Grace_Period_Days_Count",
+    "properties": {
+      "fieldValue": "15",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "NumericField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_367_Late_Charge_Maximum_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_368_Late_Charge_Minimum_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_369_Late_Charge_Rate_Percent",
+    "properties": {
+      "fieldValue": "5.000%",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "CurrencyField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_370_Late_Charge_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_371_Late_Charge_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_372_Late_Charge_Loan_Payment_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_373_Uncollected_Late_Charge_Balance_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_374_Loan_Maturity_Date",
+    "properties": {
+      "fieldValue": "August 1, 2054",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "AlphanumericField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_375_Loan_Negative_Amortization_Resolution_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_376_Loan_Negative_Amortization_Resolution_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_377_Maximum_Principal_Balance_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_378_Negative_Amortization_Limit_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_379_Negative_Amortization_Limit_Months_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_380_Negative_Amortization_Limit_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_381_Negative_Amortization_Maximum_Loan_Balance_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_382_Negative_Amortization_Maximum_PITI_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_383_Negative_Amortization_Recast_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_384_Negative_Amortization_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_385_Negative_Amortization_Payment_Discount_Rate",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_386_Negative_Amortization_Payment_Floor_Rate",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_387_Loan_Origination_System_Name",
+    "properties": {
+      "fieldValue": "The Federal Savings Bank",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_388_Loan_Originator_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_389_MERS_Organization_Identifier",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_390_MI_Initial_Premium_Rate_Percent",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_391_MI_Initial_Premium_Rate_Percent",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_392_MI_Initial_Premium_Rate_Percent",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_393_MI_Initial_Premium_Rate_Percent",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_394_MI_Initial_Premium_Rate_Percent",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_395_MI_Initial_Premium_Rate_Percent",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_396_MI_Initial_Premium_Rate_Percent",
+    "properties": {
+      "fieldValue": "NOT FOUND",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_397_Monetary_Event_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_398_No_Principal_And_Interest_Payment_Caps_Feature_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_399_Per_Change_Maximum_Principal_And_Interest_Payment_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_400_Per_Change_Maximum_Principal_And_Interest_Payment_Decrease_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_401_Per_Change_Maximum_Principal_And_Interest_Payment_Decrease_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_402_Per_Change_Maximum_Principal_And_Interest_Payment_Increase_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_403_Per_Change_Maximum_Principal_And_Interest_Payment_Increase_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_404_Per_Change_Minimum_Principal_And_Interest_Payment_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_405_Per_Change_Principal_And_Interest_Calculation_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_406_Per_Change_Principal_And_Interest_Calculation_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_407_Per_Change_Principal_And_Interest_Payment_Adjustment_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_408_Per_Change_Principal_And_Interest_Payment_Adjustment_Effective_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_409_Per_Change_Principal_And_Interest_Payment_Adjustment_Effective_Months_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_410_Per_Change_Principal_And_Interest_Payment_Adjustment_Frequency_Months_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_411_Per_Change_Principal_And_Interest_Payment_Adjustment_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_412_Per_Change_Principal_And_Interest_Payment_Minimum_Decrease_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_413_Per_Change_Principal_And_Interest_Payment_Minimum_Increase_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_414_Note_Date",
+    "properties": {
+      "fieldValue": "July 1, 2024",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "AlphanumericField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_415_Periodic_120_Days_Late_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_416_Periodic_30_Days_Late_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_417_Periodic_60_Days_Late_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_418_Periodic_90_Days_Late_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_419_Periodic_Late_Count_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_420_Periodic_Late_Count_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_421_Periodic_Base_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_422_Periodic_Effective_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_423_Periodic_Maximum_Decrease_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_424_Periodic_Maximum_Increase_Rate_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_425_Periodic_Next_Base_Rate_Selection_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_426_Periodic_Payments_Between_Base_Rates_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_427_Periodic_Effective_Months_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_428_Principal_And_Interest_Payment_Annual_Cap_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_429_Principal_And_Interest_Recast_Months_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_430_Initial_Fixed_Payment_Period",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_431_Prepayment_Finance_Charge_Refundable_Indicator",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_432_Prepayment_Penalty_Disclosure_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_433_Prepayment_Penalty_Expiration_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_434_Prepayment_Penalty_Expiration_Months_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_435_Prepayment_Penalty_Maximum_Life_Of_Loan_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_436_Prepayment_Penalty_Summary_Option_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_437_Prepayment_Penalty_Summary_Option_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_438_Prepayment_Penalty_Text_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_439_Prepayment_Penalty_Waiver_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_440_Prepayment_Penalty_Waiver_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_441_Prepayment_Penalty_Calculation_Period_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_442_Prepayment_Penalty_Calculation_Period_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_443_Prepayment_Penalty_Calculation_Period_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_444_Prepayment_Penalty_Calculation_Value_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_445_Prepayment_Penalty_Calculation_Value_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_446_Prepayment_Penalty_Curtailment_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_447_Prepayment_Penalty_Curtailment_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_448_Prepayment_Penalty_Effective_Date",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_449_Prepayment_Penalty_Fixed_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_450_Prepayment_Penalty_Maximum_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_451_Prepayment_Penalty_Option_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_452_Prepayment_Penalty_Percent",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_453_Prepayment_Penalty_Period_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_454_Prepayment_Penalty_Period_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_455_Prepayment_Penalty_Periodic_Days_Count",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_456_Prepayment_Penalty_Principal_Balance_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_457_Prepayment_Penalty_Principal_Balance_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_458_Prepayment_Penalty_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_459_Prepayment_Penalty_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_460_Prepayment_Penalty_Waived_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_461_Prepayment_Penalty_Waived_Reason_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_462_Rent_Adjustment_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_463_Rent_Adjustment_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_464_Rent_Adjustment_Type",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_465_Rent_Adjustment_Type_Other_Description",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_466_TIL_Negative_Amortization_Minimum_Principal_Payment_Amount",
+    "properties": {
+      "fieldValue": "",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "StringField"
+    }
+  },
+  {
+    "type": "Field",
+    "id": "Field_467_Year_To_Date_Late_Charges_Paid_Amount",
+    "properties": {
+      "fieldValue": "5.000%",
+      "extractedFromDocument": "Doc_1_Commercial_Promissory_Note",
+      "belongsToLoanThroughDocument": "Loan_333_888_999_123321",
+      "hasFieldType": "CurrencyField"
+    }
+  }
+]

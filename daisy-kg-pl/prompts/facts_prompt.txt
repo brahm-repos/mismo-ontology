@@ -1,0 +1,11 @@
+
+Below are the facts. generate OWL ontology in turtle format for the below 
+FACTS.
+
+FACTS:
+
+Loan has documents
+Document type identifies type of document as per customer setup
+Every Document belong to one document type
+Fields are are data extracted from documents belonging to a Loan
+Fields are of various types like string, date, nemeric, alphanumeric, currency 

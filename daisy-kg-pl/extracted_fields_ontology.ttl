@@ -1,0 +1,190 @@
+@prefix : <http://www.mismo.org/residential/2009/schemas#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mismo: <http://www.mismo.org/residential/2009/schemas#> .
+@prefix extracted: <http://www.mismo.org/extracted-fields#> .
+
+# Ontology Declaration
+extracted: a owl:Ontology ;
+    rdfs:label "Extracted Fields Ontology" ;
+    rdfs:comment "Ontology for representing data fields extracted from MISMO documents" ;
+    owl:imports mismo: .
+
+# New Classes for Extracted Fields
+
+# ExtractedField - represents a data field extracted from a document
+extracted:ExtractedField a owl:Class ;
+    rdfs:label "Extracted Field" ;
+    rdfs:comment "A data field that has been extracted from a document" ;
+    rdfs:subClassOf owl:Thing .
+
+# FieldType - represents the data type of an extracted field
+extracted:FieldType a owl:Class ;
+    rdfs:label "Field Type" ;
+    rdfs:comment "The data type classification of an extracted field" ;
+    rdfs:subClassOf owl:Thing .
+
+# Specific Field Type Instances
+extracted:StringField a extracted:FieldType ;
+    rdfs:label "String Field" ;
+    rdfs:comment "A field containing string/text data" .
+
+extracted:DateField a extracted:FieldType ;
+    rdfs:label "Date Field" ;
+    rdfs:comment "A field containing date data" .
+
+extracted:NumericField a extracted:FieldType ;
+    rdfs:label "Numeric Field" ;
+    rdfs:comment "A field containing numeric data" .
+
+extracted:AlphanumericField a extracted:FieldType ;
+    rdfs:label "Alphanumeric Field" ;
+    rdfs:comment "A field containing alphanumeric data" .
+
+extracted:CurrencyField a extracted:FieldType ;
+    rdfs:label "Currency Field" ;
+    rdfs:comment "A field containing currency/monetary data" .
+
+# Object Properties
+
+# hasDocument - links a Loan to its Documents
+extracted:hasDocument a owl:ObjectProperty ;
+    rdfs:label "has document" ;
+    rdfs:comment "Links a loan to its associated documents" ;
+    rdfs:domain mismo:Loan ;
+    rdfs:range mismo:Document .
+
+# hasDocumentType - links a Document to its Document Type
+extracted:hasDocumentType a owl:ObjectProperty ;
+    rdfs:label "has document type" ;
+    rdfs:comment "Links a document to its document type classification" ;
+    rdfs:domain mismo:Document ;
+    rdfs:range mismo:DocumentClassification .
+
+# hasExtractedField - links a Document to its extracted fields
+extracted:hasExtractedField a owl:ObjectProperty ;
+    rdfs:label "has extracted field" ;
+    rdfs:comment "Links a document to its extracted data fields" ;
+    rdfs:domain mismo:Document ;
+    rdfs:range extracted:ExtractedField .
+
+# belongsToDocument - links an extracted field to its source document
+extracted:belongsToDocument a owl:ObjectProperty ;
+    rdfs:label "belongs to document" ;
+    rdfs:comment "Links an extracted field to its source document" ;
+    rdfs:domain extracted:ExtractedField ;
+    rdfs:range mismo:Document ;
+    owl:inverseOf extracted:hasExtractedField .
+
+# hasFieldType - links an extracted field to its data type
+extracted:hasFieldType a owl:ObjectProperty ;
+    rdfs:label "has field type" ;
+    rdfs:comment "Links an extracted field to its data type classification" ;
+    rdfs:domain extracted:ExtractedField ;
+    rdfs:range extracted:FieldType .
+
+# belongsToLoan - links an extracted field to its associated loan
+# extracted:belongsToLoan a owl:ObjectProperty ;
+#    rdfs:label "belongs to loan" ;
+#    rdfs:comment "Links an extracted field to its associated loan through the document" ;
+#    rdfs:domain extracted:ExtractedField ;
+#    rdfs:range mismo:Loan .
+
+# Data Properties
+
+# fieldName - the name/identifier of the extracted field
+extracted:fieldName a owl:DatatypeProperty ;
+    rdfs:label "field name" ;
+    rdfs:comment "The name or identifier of the extracted field" ;
+    rdfs:domain extracted:ExtractedField ;
+    rdfs:range xsd:string .
+
+# fieldValue - the actual value extracted from the document
+extracted:fieldValue a owl:DatatypeProperty ;
+    rdfs:label "field value" ;
+    rdfs:comment "The actual value extracted from the document" ;
+    rdfs:domain extracted:ExtractedField ;
+    rdfs:range xsd:string .
+
+# extractionConfidence - confidence score of the extraction
+extracted:extractionConfidence a owl:DatatypeProperty ;
+    rdfs:label "extraction confidence" ;
+    rdfs:comment "Confidence score of the field extraction (0.0 to 1.0)" ;
+    rdfs:domain extracted:ExtractedField ;
+    rdfs:range xsd:decimal .
+
+# extractionDate - when the field was extracted
+extracted:extractionDate a owl:DatatypeProperty ;
+    rdfs:label "extraction date" ;
+    rdfs:comment "Date and time when the field was extracted" ;
+    rdfs:domain extracted:ExtractedField ;
+    rdfs:range xsd:dateTime .
+
+# fieldPosition - position information of the field in the document
+extracted:fieldPosition a owl:DatatypeProperty ;
+    rdfs:label "field position" ;
+    rdfs:comment "Position information of the field in the document (e.g., page, coordinates)" ;
+    rdfs:domain extracted:ExtractedField ;
+    rdfs:range xsd:string .
+
+# Constraints and Axioms
+
+# Every Document belongs to exactly one Document Type
+mismo:Document rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty extracted:hasDocumentType ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger
+] .
+
+# Every ExtractedField belongs to exactly one Document
+extracted:ExtractedField rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty extracted:belongsToDocument ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger
+] .
+
+# Every ExtractedField has exactly one FieldType
+extracted:ExtractedField rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty extracted:hasFieldType ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger
+] .
+
+# Every ExtractedField has exactly one fieldName
+extracted:ExtractedField rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty extracted:fieldName ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger
+] .
+
+# Every ExtractedField has exactly one fieldValue
+extracted:ExtractedField rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty extracted:fieldValue ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger
+] .
+
+# Field Types are disjoint (a field cannot be multiple types)
+extracted:StringField owl:disjointWith extracted:DateField .
+extracted:StringField owl:disjointWith extracted:NumericField .
+extracted:StringField owl:disjointWith extracted:AlphanumericField .
+extracted:StringField owl:disjointWith extracted:CurrencyField .
+
+extracted:DateField owl:disjointWith extracted:NumericField .
+extracted:DateField owl:disjointWith extracted:AlphanumericField .
+extracted:DateField owl:disjointWith extracted:CurrencyField .
+
+extracted:NumericField owl:disjointWith extracted:AlphanumericField .
+extracted:NumericField owl:disjointWith extracted:CurrencyField .
+
+extracted:AlphanumericField owl:disjointWith extracted:CurrencyField .
+
+# Comments explaining the ontology structure
+# This ontology extends MISMO 3.6 to support:
+# 1. Representation of extracted data fields from documents
+# 2. Field type classification (string, date, numeric, alphanumeric, currency)
+# 3. Relationships between loans, documents, document types, and extracted fields
+# 4. Metadata about field extraction (confidence, date, position)
+# 5. Proper cardinality constraints ensuring data integrity

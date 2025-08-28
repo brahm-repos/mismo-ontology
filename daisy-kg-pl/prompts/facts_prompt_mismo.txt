@@ -1,0 +1,18 @@
+
+Below are the facts and related context. generate OWL ontology in 
+turtle format for the below.
+
+FACTS:
+
+Loan has documents
+Document type identifies type of document as per customer setup
+Every Document belong to one document type
+Fields are are data extracted from documents belonging to a Loan
+Fields are of various types like string, date, nemeric, alphanumeric, currency 
+
+Context:
+Refer to the mismo-3.6.ttl file for mismo owl classes as below
+Loan is mismo:Loan
+Document is mismo:Document
+Document type is mismo:Document_classification
+Define new owl classes for the new entities that are not defined in mismo-3.6.ttl

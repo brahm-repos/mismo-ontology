@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  virtuoso:
+    image: openlink/virtuoso-opensource-7
+    container_name: virtuoso
+    ports:
+      - "8890:8890"  # HTTP port for web interface
+      - "1111:1111"  # ISQL port for command line access
+    environment:
+      - DBA_PASSWORD=mysecret
+    volumes:
+      - virtuoso_data:/data
+      - virtuoso_logs:/var/log/virtuoso
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8890/conductor"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  virtuoso_data:
+    driver: local
+  virtuoso_logs:
+    driver: local 

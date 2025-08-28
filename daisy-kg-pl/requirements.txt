@@ -1,0 +1,13 @@
+# Requirements for the Ontology Instance Generator
+# These are standard Python libraries, no external packages needed
+
+# The script uses only built-in Python libraries:
+# - json: for JSON file processing
+# - glob: for file pattern matching
+# - re: for regular expressions
+# - uuid: for unique identifier generation
+# - datetime: for timestamp generation
+# - typing: for type hints
+# - logging: for logging functionality
+
+# No external packages required - all dependencies are built-in to Python 3.6+
