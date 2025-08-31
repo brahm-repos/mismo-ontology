@@ -1,0 +1,22 @@
+File ontology/mismo-3.6/MISMO_3.6.0_B367.xsd is mismo XSD file.  
+ontology/output/mismo-3.6.ttl is the related ontology. 
+Review these and let me know what is the best way 
+to do the folllwing
+
+Below are the facts. generate OWL ontology in turtle format for the below 
+FACTS. 
+
+FACTS:
+    1. MISMO Loans contain MISMO Documents. mismo:loan is the entity representing loan. 
+    2. Document type identifies type of document as per customer setup. 
+       mismo:documentClassfication is the entity representing the document type.
+    3. Every Document belong to one document type that is documentClassification entity.
+    5. Data fields extracted from document are grouped such that they are organized under the respective mismo entities.
+       These entities are related to the document from which they are extracted.
+       MISMO Documents are associated with MISMO Entities (from the 3.6.ttl file)
+       Extracted fields can be dynamically mapped to any discovered MISMO entity
+
+Please see the attached jpg image for the higher level entities ontology to be extended. Note the "Mismo Entities" 
+refer to any entiry from mismo-3.6.ttl file. We do not know ahead what data is extracted from 
+documents and which mismo entity these belong to
+

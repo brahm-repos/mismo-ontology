@@ -1,0 +1,32 @@
+File named test-data/dataextracted_333_888_999_123321_v1.json is the json file that
+has the data extracted from a given document type of given loan. Below are the relevant
+fields and its description. 
+
+Field key "extractedFields"[x]."documentType"  indicates a document type and value indicates the 
+document type value.
+"extractedFields"[x]."documentFields"[y]."MismoContainerName" indicates the mismo entity name. its value is 
+instances of the mismo entity. Example value : "MismoContainerName": "Loan Adjustments:Rate Or Payment Change Occurrence"
+Derive the name of the "MismoContainerName" as Below
+    - Example: "MismoContainerName": "Loan Adjustments:Rate Or Payment Change Occurrence",
+    - take the value after the separator ":" if exists
+    - Remove the spaces and replace space with "_"
+    - make the name as uppercase
+    - MismoContainerName for the above example is "RATE_OR_PAYMENT_CHANGE_OCCURENCE"
+
+
+Field "extractedFields"[x]."documentFields"[y]."Mismofields"[z]."fieldName" is extracted field name.
+
+Field "extractedFields"[x]."documentFields"[y]."Mismofields"[z]."value" is extracted value of the field
+Field "extractedFields"[x]."documentFields"[y]."Mismofields"[z]."fieldName".
+
+Field "extractedFields"[x]."documentFields"[y]."Mismofields"[z].uuid is the uuid of the fieldName
+Field "extractedFields"[x]."documentFields"[y]."Mismofields"[z]."fieldName"
+
+Field "extractedFields"[x]."documentFields"[y]."Mismofields"[z].type is the datatype of the fieldName
+Field "extractedFields"[x]."documentFields"[y]."Mismofields"[z]."fieldName"
+
+
+You task is to generate a python code that takes the json and the loandocs ontology from 
+enhanced_loan_document_ontology.ttl to generate the knowledge graph with the Instances
+of data based on the ontology file enhanced_loan_document_ontology.ttl.
+

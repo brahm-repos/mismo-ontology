@@ -1,0 +1,131 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix mismo: <http://www.mismo.org/residential/2009/schemas#> .
+@prefix loandocs: <http://www.mismo.org/loan-document-ontology#> .
+
+# Enhanced Loan Document Ontology
+# Based on the facts provided and the higher-level MISMO structure
+
+loandocs: a owl:Ontology ;
+    rdfs:label "Enhanced Loan Document Ontology" ;
+    rdfs:comment "Ontology representing the relationship between MISMO loans, documents, document types, and extracted entities as per the specified facts" ;
+    owl:imports mismo: .
+
+# ========================================
+# FACT 1: MISMO Loans contain MISMO Documents
+# ========================================
+
+# Use MISMO entities directly (not extending)
+# mismo:loan represents the loan concept from MISMO
+# mismo:Document represents the document concept from MISMO
+
+# Relationship: Loan has documents
+loandocs:hasDocument a owl:ObjectProperty ;
+    rdfs:label "has document" ;
+    rdfs:comment "Links a MISMO loan to its associated MISMO documents" ;
+    rdfs:domain mismo:loan ;
+    rdfs:range mismo:Document .
+
+# ========================================
+# FACT 2: Document type identifies type of document as per customer setup
+# FACT 3: Every Document belongs to one document type that is documentClassification entity
+# ========================================
+
+# Use MISMO documentClassification entity directly
+# mismo:document_Classification represents the document type classification
+
+# Relationship: Document has document type
+loandocs:hasDocumentType a owl:ObjectProperty ;
+    rdfs:label "has document type" ;
+    rdfs:comment "Links a MISMO document to its document type classification" ;
+    rdfs:domain mismo:Document ;
+    rdfs:range mismo:document_Classification .
+
+# Constraint: Every Document belongs to exactly one Document Type
+mismo:Document rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty loandocs:hasDocumentType ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger
+] .
+
+# ========================================
+# FACT 5: Data fields extracted from document are grouped under respective MISMO entities
+# These entities are related to the document from which they are extracted
+# ========================================
+
+# Relationship: Document has extracted entities (as per image)
+# The extracted fields directly form MISMO entities that are related to the document
+loandocs:hasExtractedEntity a owl:ObjectProperty ;
+    rdfs:label "has extracted entity" ;
+    rdfs:comment "Links a MISMO document to extracted entities from the document. These entities are formed from extracted fields and are related to the document." ;
+    rdfs:domain mismo:Document ;
+    rdfs:range owl:Thing .
+
+# Relationship: MISMO entity is related to document
+loandocs:isRelatedToDocument a owl:ObjectProperty ;
+    rdfs:label "is related to document" ;
+    rdfs:comment "Links a MISMO entity (formed from extracted fields) to the document from which it was extracted" ;
+    rdfs:domain owl:Thing ;
+    rdfs:range mismo:Document .
+
+# ========================================
+# Constraints and Axioms
+# ========================================
+
+# Every Document belongs to exactly one Loan
+mismo:Document rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty loandocs:hasDocument ;
+    owl:inverseOf true ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger
+] .
+
+# ========================================
+# Example Instances (as per image)
+# ========================================
+
+# Example Loan Instance
+loandocs:Loan_2345XYZA a mismo:loan ;
+    rdfs:label "Loan: 2345XYZA" .
+
+# Example Document Instance
+loandocs:CommercialPromissoryNote a mismo:Document ;
+    rdfs:label "Commercial Promissory Note" .
+
+# Example MISMO Entity Instances (these represent entities formed from extracted fields)
+loandocs:Property a owl:Thing ;
+    rdfs:label "Property" ;
+    rdfs:comment "MISMO entity representing property information, formed from extracted fields" .
+
+loandocs:Borrower_01 a owl:Thing ;
+    rdfs:label "Borrower-01" ;
+    rdfs:comment "MISMO entity representing borrower information, formed from extracted fields" .
+
+loandocs:Address_01 a owl:Thing ;
+    rdfs:label "Address-01" ;
+    rdfs:comment "MISMO entity representing address information, formed from extracted fields" .
+
+# Example Relationships
+loandocs:Loan_2345XYZA loandocs:hasDocument loandocs:CommercialPromissoryNote .
+loandocs:CommercialPromissoryNote loandocs:hasExtractedEntity loandocs:Property .
+loandocs:CommercialPromissoryNote loandocs:hasExtractedEntity loandocs:Borrower_01 .
+loandocs:CommercialPromissoryNote loandocs:hasExtractedEntity loandocs:Address_01 .
+
+# ========================================
+# Comments explaining the ontology structure
+# ========================================
+
+# This ontology addresses the following facts:
+# 1. MISMO Loans contain MISMO Documents - represented by loan:hasDocument property linking mismo:loan to mismo:Document
+# 2. Document type identifies type of document as per customer setup - represented by loan:hasDocumentType property linking to mismo:documentClassification
+# 3. Every Document belongs to one document type - enforced by cardinality constraint on mismo:Document
+# 5. Data fields extracted from document are grouped under respective MISMO entities - represented by loan:hasExtractedEntity property
+#    These entities are related to the document from which they are extracted - represented by loan:isRelatedToDocument property
+#
+# Key Features:
+# - Uses MISMO entities directly (mismo:loan, mismo:Document, mismo:documentClassification) instead of extending them
+# - Extracted fields directly form MISMO entities that are related to documents
+# - We don't know ahead of time which specific MISMO entities extracted fields will form
+# - Follows the image structure: Loan -> Document -> Extracted Entities
