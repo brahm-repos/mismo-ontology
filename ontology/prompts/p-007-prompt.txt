@@ -1,0 +1,65 @@
+Below is the XSD snippet
+
+    <xsd:complexType name="ABOUT_VERSIONS">
+        <xsd:annotation>
+            <xsd:documentation>Information about one or more ABOUT_VERSION. Holds all occurrences of ABOUT_VERSION.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ABOUT_VERSION" type="ABOUT_VERSION" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>Information that identifies the version of the specification, software and/or data used for this transaction.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="EXTENSION" type="ABOUT_VERSIONS_EXTENSION" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="xlink:MISMOresourceLink">
+            <xsd:annotation>
+                <xsd:documentation>An xlink attribute group for defining the end point of a relationship.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+        <xsd:attributeGroup ref="AttributeExtension">
+            <xsd:annotation>
+                <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+    </xsd:complexType>
+
+
+Transform this to RDF/RDFS data type in TTL format. 
+ABOUT_VERSION is of type owl.class.
+Please ignore the below as these are extensions and do not need to be transformed.
+        <xsd:element name="EXTENSION" type="ABOUT_VERSIONS_EXTENSION" minOccurs="0"/>
+
+
+        <xsd:attributeGroup ref="xlink:MISMOresourceLink">
+            <xsd:annotation>
+                <xsd:documentation>An xlink attribute group for defining the end point of a relationship.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+        <xsd:attributeGroup ref="AttributeExtension">
+            <xsd:annotation>
+                <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+
+Please use the following hierarchical form to transform
+
+# Collection classes (Pattern 007) - using owl:Class
+mismo:ABOUT_VERSIONS a owl:Class ;
+    rdfs:label "About Versions Collection" ;
+    rdfs:comment "A collection containing multiple ABOUT_VERSION instances" ;
+    rdfs:subClassOf owl:Thing .
+
+# Element classes (Pattern 006) - using owl:Class
+mismo:ABOUT_VERSION a owl:Class ;
+    rdfs:label "About Version" ;
+    rdfs:comment "Individual version element contained in ABOUT_VERSIONS" ;
+    rdfs:subClassOf mismo:ABOUT_VERSIONS .
+
+# Object properties for containment
+mismo:containsABOUT_VERSION a owl:ObjectProperty ;
+    rdfs:label "contains ABOUT_VERSION" ;
+    rdfs:comment "Relates ABOUT_VERSIONS to individual ABOUT_VERSION instances" ;
+    owl:domain mismo:ABOUT_VERSIONS ;
+    owl:range mismo:ABOUT_VERSION ;
+    rdfs:subPropertyOf rdf:member .

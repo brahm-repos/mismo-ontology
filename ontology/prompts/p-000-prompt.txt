@@ -1,0 +1,8 @@
+
+Below is the XSD snippet
+
+    <xsd:simpleType name="MISMODate_Union">
+        <xsd:union memberTypes="xsd:gYear xsd:gYearMonth xsd:date"/>
+    </xsd:simpleType>
+
+    Transform this to RDF/RDFS data type in TTL format.

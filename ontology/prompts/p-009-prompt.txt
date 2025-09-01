@@ -1,0 +1,37 @@
+Below is the XSD snippet
+
+    <xsd:complexType name="RELATIONSHIP">
+        <xsd:annotation>
+            <xsd:documentation>Uses xlink: attributes to connect locations in the document or at any URL by defining an arc and arc type and role. The scope of the endpoints of the relationship is the collection of siblings to its RELATIONSHIPS parent; it may be necessary to de-reference the content of those siblings to find an endpoint.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="SequenceNumber" type="MISMOSequenceNumber_Base">
+            <xsd:annotation>
+                <xsd:documentation>An integer value used to provide an order to multi-instance sibling elements. The value must be unique for each sibling element.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attributeGroup ref="xlink:MISMOarcLink">
+            <xsd:annotation>
+                <xsd:documentation>An xlink set of attributes that identifies two end points and the kind of relationship they have to each other.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+        <xsd:attributeGroup ref="AttributeExtension">
+            <xsd:annotation>
+                <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+    </xsd:complexType>
+
+
+
+Transform this to RDF/RDFS data type in TTL format. 
+Please ignore the below as these are extensions and do not need to be transformed.
+        <xsd:attributeGroup ref="xlink:MISMOarcLink">
+            <xsd:annotation>
+                <xsd:documentation>An xlink set of attributes that identifies two end points and the kind of relationship they have to each other.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+        <xsd:attributeGroup ref="AttributeExtension">
+            <xsd:annotation>
+                <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>

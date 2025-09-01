@@ -1,0 +1,14 @@
+# Core dependencies for XML/XSD to Turtle transformation
+lxml>=4.6.0
+rdflib>=6.0.0
+
+# Additional dependencies for enhanced functionality
+requests>=2.25.0
+pathlib2>=2.3.0; python_version < "3.4"
+
+# Optional: For better XML processing performance
+# lxml[cssselect]>=4.6.0
+
+# Optional: For additional RDF processing capabilities
+# rdflib[sparql]>=6.0.0
+# rdflib[html]>=6.0.0 

@@ -1,0 +1,98 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix mismo: <http://www.mismo.org/residential/2009/schemas#> .
+@prefix xlink: <http://www.w3.org/1999/xlink#> .
+
+# MISMOIdentifier_Base - Base datatype with string restriction
+mismo:MISMOIdentifier_Base a rdfs:Datatype ;
+    rdfs:label "MISMO Identifier Base" ;
+    rdfs:comment "Base datatype for MISMO identifiers with max length 16383" ;
+    rdfs:subClassOf xsd:string .
+
+# MISMOIdentifier - Complex Type as Datatype
+mismo:MISMOIdentifier a rdfs:Datatype ;
+    rdfs:label "MISMO Identifier" ;
+    rdfs:comment "A data type of Identifier SHOULD identify a data point that provides a unique value for reference purposes and MAY have IdentifierOwnerURI and IdentifierEffectiveDate attributes. EXAMPLE: A Loan Identifier could be expressed as '0034567891-A'." ;
+    rdfs:subClassOf mismo:MISMOIdentifier_Base .
+
+# Data Properties for the datatype attributes
+mismo:dataNotSuppliedReasonType a owl:DatatypeProperty ;
+    rdfs:label "data not supplied reason type" ;
+    rdfs:comment "A value from a MISMO prescribed list that specifies the reason a specific data point is not included in the message." ;
+    rdfs:domain mismo:MISMOIdentifier ;
+    rdfs:range mismo:DataNotSuppliedReasonBase .
+
+mismo:dataNotSuppliedReasonTypeAdditionalDescription a owl:DatatypeProperty ;
+    rdfs:label "data not supplied reason type additional description" ;
+    rdfs:comment "A free-form text field used to provide a supplemental comment or remark regarding the Data Not Supplied Reason Type." ;
+    rdfs:domain mismo:MISMOIdentifier ;
+    rdfs:range mismo:MISMOString_Base .
+
+mismo:dataNotSuppliedReasonTypeOtherDescription a owl:DatatypeProperty ;
+    rdfs:label "data not supplied reason type other description" ;
+    rdfs:comment "A free-form text field used to capture the enumeration when Other is selected for Data Not Supplied Reason Type." ;
+    rdfs:domain mismo:MISMOIdentifier ;
+    rdfs:range mismo:MISMOString_Base .
+
+mismo:identifierEffectiveDate a owl:DatatypeProperty ;
+    rdfs:label "identifier effective date" ;
+    rdfs:comment "The date on which the value represented by the MISMOIdentifier is effective as determined by the issuer or owner as specified by the IdentifierOwnerURI." ;
+    rdfs:domain mismo:MISMOIdentifier ;
+    rdfs:range mismo:MISMODate_Base .
+
+mismo:identifierOwnerURI a owl:DatatypeProperty ;
+    rdfs:label "identifier owner URI" ;
+    rdfs:comment "Identifies the owner or publisher of the identifier associated with a MISMO term with the class word of 'Identifier' by means or a URI. This is an XML attribute." ;
+    rdfs:domain mismo:MISMOIdentifier ;
+    rdfs:range mismo:MISMOURI_Base .
+
+mismo:sensitiveIndicator a owl:DatatypeProperty ;
+    rdfs:label "sensitive indicator" ;
+    rdfs:comment "Allows producers and consumers of XML instance documents that are valid MISMO V3 documents to mark any data point to be treated as sensitive. MISMO recommends that any use of a data point labeled as 'Sensitive Information' in the LDD ALWAYS have this attribute set to 'true'." ;
+    rdfs:domain mismo:MISMOIdentifier ;
+    rdfs:range mismo:MISMOIndicator_Base .
+
+# Constraints and Axioms for the datatype
+# Every MISMOIdentifier has at most one identifierOwnerURI (if provided)
+mismo:MISMOIdentifier rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty mismo:identifierOwnerURI ;
+    owl:maxCardinality "1"^^xsd:nonNegativeInteger
+] .
+
+# Every MISMOIdentifier has at most one identifierEffectiveDate (if provided)
+mismo:MISMOIdentifier rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty mismo:identifierEffectiveDate ;
+    owl:maxCardinality "1"^^xsd:nonNegativeInteger
+] .
+
+# Every MISMOIdentifier has at most one sensitiveIndicator (if provided)
+mismo:MISMOIdentifier rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty mismo:sensitiveIndicator ;
+    owl:maxCardinality "1"^^xsd:nonNegativeInteger
+] .
+
+# Every MISMOIdentifier has at most one dataNotSuppliedReasonType
+mismo:MISMOIdentifier rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty mismo:dataNotSuppliedReasonType ;
+    owl:maxCardinality "1"^^xsd:nonNegativeInteger
+] .
+
+# Every MISMOIdentifier has at most one dataNotSuppliedReasonTypeAdditionalDescription
+mismo:MISMOIdentifier rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty mismo:dataNotSuppliedReasonTypeAdditionalDescription ;
+    owl:maxCardinality "1"^^xsd:nonNegativeInteger
+] .
+
+# Every MISMOIdentifier has at most one dataNotSuppliedReasonTypeOtherDescription
+mismo:MISMOIdentifier rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty mismo:dataNotSuppliedReasonTypeOtherDescription ;
+    owl:maxCardinality "1"^^xsd:nonNegativeInteger
+] .

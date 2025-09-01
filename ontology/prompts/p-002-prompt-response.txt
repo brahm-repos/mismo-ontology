@@ -1,0 +1,43 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix mismo: <http://www.mismo.org/residential/2009/schemas#> .
+
+# MISMOEnum_Base - Base type for MISMO enumerations
+mismo:MISMOEnum_Base a rdfs:Datatype ;
+    rdfs:label "MISMO Enumeration Base" ;
+    rdfs:comment "Base datatype for MISMO enumerations" ;
+    rdfs:subClassOf xsd:string .
+
+# DataNotSuppliedReasonBase - Simple Type Definition
+mismo:DataNotSuppliedReasonBase a rdfs:Datatype ;
+    rdfs:label "Data Not Supplied Reason Base" ;
+    rdfs:comment "Base datatype for reasons why data is not supplied in MISMO messages" ;
+    rdfs:subClassOf mismo:MISMOEnum_Base .
+
+# Enumeration Values as Individual Instances
+mismo:NotCollected a rdf:Property ;
+    rdfs:label "Not Collected" ;
+    rdfs:comment "The creator of the MISMO message does not collect the data point." ;
+    rdfs:subPropertyOf mismo:DataNotSuppliedReasonBase .
+
+mismo:NotReceived a rdf:Property ;
+    rdfs:label "Not Received" ;
+    rdfs:comment "The creator of the MISMO message can collect the data point, but has not received a value as of the time the file was created." ;
+    rdfs:subPropertyOf mismo:DataNotSuppliedReasonBase .
+
+mismo:NotRelevant a rdf:Property ;
+    rdfs:label "Not Relevant" ;
+    rdfs:comment "The creator of the MISMO message can collect the data point, but did not ask for it because it is not germane to the context at hand. (One example is 'cash out purpose type' for a purchase loan.)" ;
+    rdfs:subPropertyOf mismo:DataNotSuppliedReasonBase .
+
+mismo:Omitted a rdf:Property ;
+    rdfs:label "Omitted" ;
+    rdfs:comment "The creator of the MISMO message has a value for the data point. However, they have a pertinent reason (such as confidentiality) for not including it in the message." ;
+    rdfs:subPropertyOf mismo:DataNotSuppliedReasonBase .
+
+mismo:Other a rdf:Property ;
+    rdfs:label "Other" ;
+    rdfs:comment "Other reason for data not being supplied." ;
+    rdfs:subPropertyOf mismo:DataNotSuppliedReasonBase .

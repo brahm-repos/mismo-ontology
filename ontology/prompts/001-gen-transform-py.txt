@@ -1,0 +1,662 @@
+MISMO_3.6.0_B367.xsd is the mismo standard XSD which defines mortgage industry entities, 
+attributes etc. Your task is to transform this XSD into a RDF/RDFS/OWL in turtle format. 
+Follow the below instructions, guidelines and pattern based transformation to transform the
+MISMO XSD into a OWL in turtle format. These are numbered starting with 1.
+
+
+1. Standard Prefixes:
+Please add the following prefixes at the begining of the TTL file.
+
+@prefix mismo: <http://www.mismo.org/residential/2009/schemas#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+2. Read the XSD such that you take one completer type at a time and process.
+
+Examples of complete type are:
+Example 01:
+    <xsd:simpleType name="MISMOEnum_Base">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="80"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+Example 02:
+    <xsd:complexType name="ALIASES">
+        <xsd:annotation>
+            <xsd:documentation>Information about one or more ALIAS. Holds all occurrences of ALIAS.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ALIAS" type="ALIAS" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>Other names that the borrower may be known by and associated information.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="EXTENSION" type="ALIASES_EXTENSION" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="xlink:MISMOresourceLink">
+            <xsd:annotation>
+                <xsd:documentation>An xlink attribute group for defining the end point of a relationship.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+        <xsd:attributeGroup ref="AttributeExtension">
+            <xsd:annotation>
+                <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+    </xsd:complexType>
+
+
+3. Pattern 001
+
+Sample XSD Pattern:
+    <xsd:simpleType name="MISMOEnum_Base">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="80"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+Sample TTL Transformation
+
+mismo:MISMOEnum_Base a rdfs:Datatype ;
+    rdfs:label "MISMOEnum_Base" ;
+    rdfs:comment "String datatype with maximum length of 80 characters" ;
+    rdfs:subClassOf xsd:string .
+
+
+3.1 Pattern 001.1
+Simple XSD Pattern
+    <xsd:simpleType name="MISMODate_Union">
+        <xsd:union memberTypes="xsd:gYear xsd:gYearMonth xsd:date"/>
+    </xsd:simpleType>
+
+Simple TTL Transformation
+
+# MISMODate_Union - Union type combining different date formats
+mismo:MISMODate_Union a rdfs:Datatype ;
+    rdfs:label "MISMODate_Union" ;
+    rdfs:comment "A union datatype that accepts year (gYear), year-month (gYearMonth), or full date (date) formats" ;
+    rdfs:subClassOf xsd:gYear, xsd:gYearMonth, xsd:date .
+
+    
+4. Pattern 002
+
+Sample XSD Pattern
+   <xsd:simpleType name="DataNotSuppliedReasonBase">
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="NotCollected">
+                <xsd:annotation>
+                    <xsd:documentation>The creator of the MISMO message does not collect the data point.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="NotReceived">
+                <xsd:annotation>
+                    <xsd:documentation>The creator of the MISMO message can collect the data point, but has not received a value as of the time the file was created.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="NotRelevant">
+                <xsd:annotation>
+                    <xsd:documentation>The creator of the MISMO message can collect the data point, but did not ask for it because it is not germane to the context at hand. (One example is “cash out purpose type” for a purchase loan.)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Omitted">
+                <xsd:annotation>
+                    <xsd:documentation>The creator of the MISMO message has a value for the data point. However, they have a pertinent reason (such as confidentiality) for not including it in the message.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    Sample TTL Transformation:
+
+    # MISMOEnum_Base - Base type for MISMO enumerations
+mismo:MISMOEnum_Base a rdfs:Datatype ;
+    rdfs:label "MISMO Enumeration Base" ;
+    rdfs:comment "Base datatype for MISMO enumerations" ;
+    rdfs:subClassOf xsd:string .
+
+# DataNotSuppliedReasonBase - Simple Type Definition
+mismo:DataNotSuppliedReasonBase a rdfs:Datatype ;
+    rdfs:label "Data Not Supplied Reason Base" ;
+    rdfs:comment "Base datatype for reasons why data is not supplied in MISMO messages" ;
+    rdfs:subClassOf mismo:MISMOEnum_Base .
+
+# Enumeration Values as Individual Instances
+mismo:NotCollected a rdf:Property ;
+    rdfs:label "Not Collected" ;
+    rdfs:comment "The creator of the MISMO message does not collect the data point." ;
+    rdfs:subPropertyOf mismo:DataNotSuppliedReasonBase .
+
+mismo:NotReceived a rdf:Property ;
+    rdfs:label "Not Received" ;
+    rdfs:comment "The creator of the MISMO message can collect the data point, but has not received a value as of the time the file was created." ;
+    rdfs:subPropertyOf mismo:DataNotSuppliedReasonBase .
+
+mismo:NotRelevant a rdf:Property ;
+    rdfs:label "Not Relevant" ;
+    rdfs:comment "The creator of the MISMO message can collect the data point, but did not ask for it because it is not germane to the context at hand. (One example is 'cash out purpose type' for a purchase loan.)" ;
+    rdfs:subPropertyOf mismo:DataNotSuppliedReasonBase .
+
+mismo:Omitted a rdf:Property ;
+    rdfs:label "Omitted" ;
+    rdfs:comment "The creator of the MISMO message has a value for the data point. However, they have a pertinent reason (such as confidentiality) for not including it in the message." ;
+    rdfs:subPropertyOf mismo:DataNotSuppliedReasonBase .
+
+mismo:Other a rdf:Property ;
+    rdfs:label "Other" ;
+    rdfs:comment "Other reason for data not being supplied." ;
+    rdfs:subPropertyOf mismo:DataNotSuppliedReasonBase .
+
+
+5. Pattern 003
+
+Sample XSD Pattern
+    <xsd:complexType name="MISMO_BASE">
+        <xsd:sequence>
+            <xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+Sample TTL Transformation:
+
+mismo:hasAnyElementContent a owl:DatatypeProperty ;
+    rdfs:label "has any element content" ;
+    rdfs:comment "Property for simple text content from target namespace elements" ;
+    rdfs:range xsd:string .
+
+mismo:hasAnyElement a owl:ObjectProperty ;
+    rdfs:label "has any element" ;
+    rdfs:comment "Property for complex element references from target namespace" ;
+    rdfs:range owl:Thing .
+
+5.1 Pattern 003.1
+
+Sample XSD Pattern
+    <xsd:complexType name="ABOUT_VERSION_OTHER_BASE">
+        <xsd:sequence>
+            <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+Sample TTL Transformation:
+
+mismo:hasOtherNamespaceElementContent a owl:DatatypeProperty ;
+    rdfs:label "has other namespace element content" ;
+    rdfs:comment "Property for simple text content from other namespace elements" ;
+    rdfs:range xsd:string .
+
+mismo:hasOtherNamespaceElement a owl:ObjectProperty ;
+    rdfs:label "has other namespace element" ;
+    rdfs:comment "Property for complex element references from other namespaces" ;
+    rdfs:range owl:Thing .
+
+6. Pattern 004
+
+Sample XSD Pattern
+
+    
+    <xsd:complexType name="MISMOIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>A data type of Identifier SHOULD identify a data point that provides a unique value for reference purposes and MAY have IdentifierOwnerURI and IdentifierEffectiveDate attributes.
+EXAMPLE: A Loan Identifier could be expressed as "0034567891-A".</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="MISMOIdentifier_Base">
+                <xsd:attribute name="DataNotSuppliedReasonType" type="DataNotSuppliedReasonBase">
+                    <xsd:annotation>
+                        <xsd:documentation>A value from a MISMO prescribed list that specifies the reason a specific data point is not included in the message.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="DataNotSuppliedReasonTypeAdditionalDescription" type="MISMOString_Base">
+                    <xsd:annotation>
+                        <xsd:documentation>A free-form text field used to provide a supplemental comment or remark regarding the Data Not Supplied Reason Type.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="DataNotSuppliedReasonTypeOtherDescription" type="MISMOString_Base">
+                    <xsd:annotation>
+                        <xsd:documentation>A free-form text field used to capture the enumeration when Other is selected for Data Not Supplied Reason Type.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="IdentifierEffectiveDate" type="MISMODate_Base">
+                    <xsd:annotation>
+                        <xsd:documentation>The date on which the value represented by the MISMOIdentifier is effective as determined by the issuer or owner as specified by the IdentifierOwnerURI.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="IdentifierOwnerURI" type="MISMOURI_Base">
+                    <xsd:annotation>
+                        <xsd:documentation>Identifies the owner or publisher of the identifier associated with a MISMO term with the class word of "Identifier" by means or a URI. This is an XML attribute.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="SensitiveIndicator" type="MISMOIndicator_Base">
+                    <xsd:annotation>
+                        <xsd:documentation>Allows producers and consumers of XML instance documents that are valid MISMO V3 documents to mark any data point to be treated as sensitive. MISMO recommends that any use of a data point labeled as "Sensitive Information" in the LDD ALWAYS have this attribute set to "true".</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attributeGroup ref="xlink:MISMOresourceLink">
+                    <xsd:annotation>
+                        <xsd:documentation>An xlink attribute group for defining the end point of a relationship.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attributeGroup>
+                <xsd:attributeGroup ref="AttributeExtension">
+                    <xsd:annotation>
+                        <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attributeGroup>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+
+Sample TTL Transformation:
+
+# MISMOIdentifier_Base - Base datatype with string restriction
+mismo:MISMOIdentifier_Base a rdfs:Datatype ;
+    rdfs:label "MISMO Identifier Base" ;
+    rdfs:comment "Base datatype for MISMO identifiers with max length 16383" ;
+    rdfs:subClassOf xsd:string .
+
+# MISMOIdentifier - Complex Type as Datatype
+mismo:MISMOIdentifier a rdfs:Datatype ;
+    rdfs:label "MISMO Identifier" ;
+    rdfs:comment "A data type of Identifier SHOULD identify a data point that provides a unique value for reference purposes and MAY have IdentifierOwnerURI and IdentifierEffectiveDate attributes. EXAMPLE: A Loan Identifier could be expressed as '0034567891-A'." ;
+    rdfs:subClassOf mismo:MISMOIdentifier_Base .
+
+# Data Properties for the datatype attributes
+mismo:dataNotSuppliedReasonType a owl:DatatypeProperty ;
+    rdfs:label "data not supplied reason type" ;
+    rdfs:comment "A value from a MISMO prescribed list that specifies the reason a specific data point is not included in the message." ;
+    rdfs:domain mismo:MISMOIdentifier ;
+    rdfs:range mismo:DataNotSuppliedReasonBase .
+
+mismo:dataNotSuppliedReasonTypeAdditionalDescription a owl:DatatypeProperty ;
+    rdfs:label "data not supplied reason type additional description" ;
+    rdfs:comment "A free-form text field used to provide a supplemental comment or remark regarding the Data Not Supplied Reason Type." ;
+    rdfs:domain mismo:MISMOIdentifier ;
+    rdfs:range mismo:MISMOString_Base .
+
+mismo:dataNotSuppliedReasonTypeOtherDescription a owl:DatatypeProperty ;
+    rdfs:label "data not supplied reason type other description" ;
+    rdfs:comment "A free-form text field used to capture the enumeration when Other is selected for Data Not Supplied Reason Type." ;
+    rdfs:domain mismo:MISMOIdentifier ;
+    rdfs:range mismo:MISMOString_Base .
+
+mismo:identifierEffectiveDate a owl:DatatypeProperty ;
+    rdfs:label "identifier effective date" ;
+    rdfs:comment "The date on which the value represented by the MISMOIdentifier is effective as determined by the issuer or owner as specified by the IdentifierOwnerURI." ;
+    rdfs:domain mismo:MISMOIdentifier ;
+    rdfs:range mismo:MISMODate_Base .
+
+mismo:identifierOwnerURI a owl:DatatypeProperty ;
+    rdfs:label "identifier owner URI" ;
+    rdfs:comment "Identifies the owner or publisher of the identifier associated with a MISMO term with the class word of 'Identifier' by means or a URI. This is an XML attribute." ;
+    rdfs:domain mismo:MISMOIdentifier ;
+    rdfs:range mismo:MISMOURI_Base .
+
+mismo:sensitiveIndicator a owl:DatatypeProperty ;
+    rdfs:label "sensitive indicator" ;
+    rdfs:comment "Allows producers and consumers of XML instance documents that are valid MISMO V3 documents to mark any data point to be treated as sensitive. MISMO recommends that any use of a data point labeled as 'Sensitive Information' in the LDD ALWAYS have this attribute set to 'true'." ;
+    rdfs:domain mismo:MISMOIdentifier ;
+    rdfs:range mismo:MISMOIndicator_Base .
+
+7. Pattern 005
+
+Sample XSD Snippet:
+    <xsd:complexType name="ABOUT_VERSION_EXTENSION">
+        <xsd:sequence>
+            <xsd:element name="MISMO" type="MISMO_BASE" minOccurs="0"/>
+            <xsd:element name="OTHER" type="ABOUT_VERSION_OTHER_BASE" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+Sample TTL Transformation:
+
+# ✅ SOLUTION: No standalone class generated
+# Extension properties only - class exists implicitly through hasExtension
+
+mismo:hasMismo a owl:ObjectProperty ;
+    rdfs:label "has mismo" ;
+    rdfs:comment "Property representing the MISMO element of type MISMO" ;
+    rdfs:range mismo:MISMO .
+
+mismo:hasOther a owl:ObjectProperty ;
+    rdfs:label "has other" ;
+    rdfs:comment "Property representing the OTHER element of type OTHER" ;
+    rdfs:range mismo:OTHER .
+
+
+8. Pattern 005.1
+Simple XSD Snippet
+
+    <xsd:complexType name="AUTOMATED_UNDERWRITING_SYSTEM_REQUEST">
+        <xsd:annotation>
+            <xsd:documentation>Information about the request for a computer generated loan decision.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="EXTENSION" type="AUTOMATED_UNDERWRITING_SYSTEM_REQUEST_EXTENSION" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="xlink:MISMOresourceLink">
+            <xsd:annotation>
+                <xsd:documentation>An xlink attribute group for defining the end point of a relationship.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+        <xsd:attributeGroup ref="AttributeExtension">
+            <xsd:annotation>
+                <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+    </xsd:complexType>
+
+Sample TTL Transformation:
+Please ignore these kind of pattern. There is no need to transform these.
+
+
+
+9. Pattern 008
+
+XSD Snipprt:
+
+        <xsd:attributeGroup ref="xlink:MISMOresourceLink">
+            <xsd:annotation>
+                <xsd:documentation>An xlink attribute group for defining the end point of a relationship.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+        <xsd:attributeGroup ref="AttributeExtension">
+            <xsd:annotation>
+                <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+
+Sample TTL Transformation:
+ Ignore the below as these are extensions and do not need to be transformed.
+
+
+10. Pattern 006
+Sample XSD Snippet:
+    <xsd:complexType name="ABOUT_VERSION">
+        <xsd:annotation>
+            <xsd:documentation>Information that identifies the version of the specification, software and/or data used for this transaction.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="AboutVersionIdentifier" type="MISMOIdentifier" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>A unique value that represents a user defined version identifier.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="CreatedDatetime" type="MISMODatetime" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The date and time at which the message, deal or document was created.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="DataReportedEffectiveDate" type="MISMODate" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The effective as of reporting date of the data in the file.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="DataVersionIdentifier" type="MISMOIdentifier" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Specifies the data file version.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="DataVersionName" type="MISMOString" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Identifies the type of data file.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="EXTENSION" type="ABOUT_VERSION_EXTENSION" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="SequenceNumber" type="MISMOSequenceNumber_Base">
+            <xsd:annotation>
+                <xsd:documentation>An integer value used to provide an order to multi-instance sibling elements. The value must be unique for each sibling element.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attributeGroup ref="xlink:MISMOresourceLink">
+            <xsd:annotation>
+                <xsd:documentation>An xlink attribute group for defining the end point of a relationship.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+        <xsd:attributeGroup ref="AttributeExtension">
+            <xsd:annotation>
+                <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+    </xsd:complexType>
+
+Ignore the below as these are extensions and do not need to be transformed.
+        <xsd:element name="EXTENSION" type="ABOUT_VERSION_EXTENSION" minOccurs="0"/>
+
+        <xsd:attributeGroup ref="xlink:MISMOresourceLink">
+            <xsd:annotation>
+                <xsd:documentation>An xlink attribute group for defining the end point of a relationship.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+        <xsd:attributeGroup ref="AttributeExtension">
+            <xsd:annotation>
+                <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+
+
+
+Sample TTL Transformation:
+
+# ABOUT_VERSION as the main class
+mismo:ABOUT_VERSION a rdfs:Class ;
+    rdfs:label "ABOUT_VERSION" ;
+    rdfs:comment "Information that identifies the version of the specification, software and/or data used for this transaction." .
+
+# AboutVersionIdentifier element as a datatype property of ABOUT_VERSION
+mismo:AboutVersionIdentifier a owl:DatatypeProperty ;
+    rdfs:label "AboutVersionIdentifier" ;
+    rdfs:comment "A unique value that represents a user defined version identifier." ;
+    rdfs:domain mismo:ABOUT_VERSION ;
+    rdfs:range mismo:MISMOIdentifier .
+
+# CreatedDatetime element as a datatype property of ABOUT_VERSION
+mismo:CreatedDatetime a owl:DatatypeProperty ;
+    rdfs:label "CreatedDatetime" ;
+    rdfs:comment "The date and time at which the message, deal or document was created." ;
+    rdfs:domain mismo:ABOUT_VERSION ;
+    rdfs:range mismo:MISMODatetime .
+
+# DataReportedEffectiveDate element as a datatype property of ABOUT_VERSION
+mismo:DataReportedEffectiveDate a owl:DatatypeProperty ;
+    rdfs:label "DataReportedEffectiveDate" ;
+    rdfs:comment "The effective as of reporting date of the data in the file." ;
+    rdfs:domain mismo:ABOUT_VERSION ;
+    rdfs:range mismo:MISMODate .
+
+# DataVersionIdentifier element as a datatype property of ABOUT_VERSION
+mismo:DataVersionIdentifier a owl:DatatypeProperty ;
+    rdfs:label "DataVersionIdentifier" ;
+    rdfs:comment "Specifies the data file version." ;
+    rdfs:domain mismo:ABOUT_VERSION ;
+    rdfs:range mismo:MISMOIdentifier .
+
+# DataVersionName element as a datatype property of ABOUT_VERSION
+mismo:DataVersionName a owl:DatatypeProperty ;
+    rdfs:label "DataVersionName" ;
+    rdfs:comment "Identifies the type of data file." ;
+    rdfs:domain mismo:ABOUT_VERSION ;
+    rdfs:range mismo:MISMOString .
+
+# Object property for EXTENSION element 
+mismo:hasExtension a owl:ObjectProperty ;
+    rdfs:label "has extension" ;
+    rdfs:comment "Property representing the EXTENSION element of type ABOUT_VERSION_EXTENSION" ;
+    rdfs:domain mismo:ABOUT_VERSION ;
+    rdfs:range mismo:ABOUT_VERSION_EXTENSION .
+
+
+# SequenceNumber attribute as a datatype property of ABOUT_VERSION
+mismo:SequenceNumber a owl:DatatypeProperty ;
+    rdfs:label "SequenceNumber" ;
+    rdfs:comment "An integer value used to provide an order to multi-instance sibling elements. The value must be unique for each sibling element." ;
+    rdfs:domain mismo:ABOUT_VERSION ;
+    rdfs:range mismo:MISMOSequenceNumber_Base .
+
+# Note: xlink:MISMOresourceLink and AttributeExtension attribute groups are ignored as specified
+
+
+11. Pattern 007
+Sample XSD Pattern:
+
+    <xsd:complexType name="ABOUT_VERSIONS">
+        <xsd:annotation>
+            <xsd:documentation>Information about one or more ABOUT_VERSION. Holds all occurrences of ABOUT_VERSION.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ABOUT_VERSION" type="ABOUT_VERSION" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>Information that identifies the version of the specification, software and/or data used for this transaction.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="EXTENSION" type="ABOUT_VERSIONS_EXTENSION" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="xlink:MISMOresourceLink">
+            <xsd:annotation>
+                <xsd:documentation>An xlink attribute group for defining the end point of a relationship.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+        <xsd:attributeGroup ref="AttributeExtension">
+            <xsd:annotation>
+                <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+    </xsd:complexType>
+
+Please ignore the below as these are extensions and do not need to be transformed.
+        <xsd:element name="EXTENSION" type="ABOUT_VERSIONS_EXTENSION" minOccurs="0"/>
+
+
+        <xsd:attributeGroup ref="xlink:MISMOresourceLink">
+            <xsd:annotation>
+                <xsd:documentation>An xlink attribute group for defining the end point of a relationship.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+        <xsd:attributeGroup ref="AttributeExtension">
+            <xsd:annotation>
+                <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+
+Please use the following hierarchical form to transform
+
+# Collection classes (Pattern 007) - using owl:Class
+mismo:ABOUT_VERSIONS a owl:Class ;
+    rdfs:label "About Versions Collection" ;
+    rdfs:comment "A collection containing multiple ABOUT_VERSION instances" ;
+    rdfs:subClassOf owl:Thing .
+
+# Element classes (Pattern 006) - using owl:Class
+mismo:ABOUT_VERSION a owl:Class ;
+    rdfs:label "About Version" ;
+    rdfs:comment "Individual version element contained in ABOUT_VERSIONS" ;
+    rdfs:subClassOf mismo:ABOUT_VERSIONS .
+
+# Object properties for containment
+mismo:containsABOUT_VERSION a owl:ObjectProperty ;
+    rdfs:label "contains ABOUT_VERSION" ;
+    rdfs:comment "Relates ABOUT_VERSIONS to individual ABOUT_VERSION instances" ;
+    owl:domain mismo:ABOUT_VERSIONS ;
+    owl:range mismo:ABOUT_VERSION ;
+    rdfs:subPropertyOf rdf:member .
+
+Sample TTL Transformation:
+
+
+# Collection classes (Pattern 007) - using owl:Class
+mismo:ABOUT_VERSIONS a owl:Class ;
+    rdfs:label "About Versions Collection" ;
+    rdfs:comment "Information about one or more ABOUT_VERSION. Holds all occurrences of ABOUT_VERSION." ;
+    rdfs:subClassOf owl:Thing .
+
+# Element classes (Pattern 006) - using owl:Class
+mismo:ABOUT_VERSION a owl:Class ;
+    rdfs:label "About Version" ;
+    rdfs:comment "Information that identifies the version of the specification, software and/or data used for this transaction." ;
+    rdfs:subClassOf mismo:ABOUT_VERSIONS .
+
+# Object properties for containment
+mismo:containsABOUT_VERSION a owl:ObjectProperty ;
+    rdfs:label "contains ABOUT_VERSION" ;
+    rdfs:comment "Relates ABOUT_VERSIONS to individual ABOUT_VERSION instances" ;
+    owl:domain mismo:ABOUT_VERSIONS ;
+    owl:range mismo:ABOUT_VERSION ;
+    rdfs:subPropertyOf rdf:member .
+
+12. Pattern 009
+
+Sample XSD Snippet:
+
+
+    <xsd:complexType name="RELATIONSHIP">
+        <xsd:annotation>
+            <xsd:documentation>Uses xlink: attributes to connect locations in the document or at any URL by defining an arc and arc type and role. The scope of the endpoints of the relationship is the collection of siblings to its RELATIONSHIPS parent; it may be necessary to de-reference the content of those siblings to find an endpoint.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="SequenceNumber" type="MISMOSequenceNumber_Base">
+            <xsd:annotation>
+                <xsd:documentation>An integer value used to provide an order to multi-instance sibling elements. The value must be unique for each sibling element.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attributeGroup ref="xlink:MISMOarcLink">
+            <xsd:annotation>
+                <xsd:documentation>An xlink set of attributes that identifies two end points and the kind of relationship they have to each other.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+        <xsd:attributeGroup ref="AttributeExtension">
+            <xsd:annotation>
+                <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+    </xsd:complexType>
+
+
+
+Transform this to RDF/RDFS data type in TTL format. 
+Please ignore the below as these are extensions and do not need to be transformed.
+        <xsd:attributeGroup ref="xlink:MISMOarcLink">
+            <xsd:annotation>
+                <xsd:documentation>An xlink set of attributes that identifies two end points and the kind of relationship they have to each other.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+        <xsd:attributeGroup ref="AttributeExtension">
+            <xsd:annotation>
+                <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+
+
+Sample TTL Transformation:
+
+
+# RELATIONSHIP as a class
+mismo:RELATIONSHIP a rdfs:Class ;
+    rdfs:label "RELATIONSHIP" ;
+    rdfs:comment "Uses xlink: attributes to connect locations in the document or at any URL by defining an arc and arc type and role. The scope of the endpoints of the relationship is the collection of siblings to its RELATIONSHIPS parent; it may be necessary to de-reference the content of those siblings to find an endpoint." .
+
+# SequenceNumber attribute as data type
+mismo:SequenceNumber a rdfs:Datatype ;
+    rdfs:label "SequenceNumber" ;
+    rdfs:comment "An integer value used to provide an order to multi-instance sibling elements. The value must be unique for each sibling element." ;
+    rdfs:subClassOf mismo:MISMOSequenceNumber_Base .
+
+# Note: xlink:MISMOarcLink attribute group is ignored as specified
+# Note: AttributeExtension attribute group is ignored as specified
+
+13. Unmatchec patterns
+if you find any patterns in the XSD that did not match the ones from the promot, please list them 
+separately.
+
+
+
+
+
+
+
+

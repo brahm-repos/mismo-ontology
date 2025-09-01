@@ -1,0 +1,54 @@
+    Below is the XSD snippet
+    
+    <xsd:complexType name="MISMOIdentifier">
+        <xsd:annotation>
+            <xsd:documentation>A data type of Identifier SHOULD identify a data point that provides a unique value for reference purposes and MAY have IdentifierOwnerURI and IdentifierEffectiveDate attributes.
+EXAMPLE: A Loan Identifier could be expressed as "0034567891-A".</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="MISMOIdentifier_Base">
+                <xsd:attribute name="DataNotSuppliedReasonType" type="DataNotSuppliedReasonBase">
+                    <xsd:annotation>
+                        <xsd:documentation>A value from a MISMO prescribed list that specifies the reason a specific data point is not included in the message.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="DataNotSuppliedReasonTypeAdditionalDescription" type="MISMOString_Base">
+                    <xsd:annotation>
+                        <xsd:documentation>A free-form text field used to provide a supplemental comment or remark regarding the Data Not Supplied Reason Type.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="DataNotSuppliedReasonTypeOtherDescription" type="MISMOString_Base">
+                    <xsd:annotation>
+                        <xsd:documentation>A free-form text field used to capture the enumeration when Other is selected for Data Not Supplied Reason Type.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="IdentifierEffectiveDate" type="MISMODate_Base">
+                    <xsd:annotation>
+                        <xsd:documentation>The date on which the value represented by the MISMOIdentifier is effective as determined by the issuer or owner as specified by the IdentifierOwnerURI.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="IdentifierOwnerURI" type="MISMOURI_Base">
+                    <xsd:annotation>
+                        <xsd:documentation>Identifies the owner or publisher of the identifier associated with a MISMO term with the class word of "Identifier" by means or a URI. This is an XML attribute.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="SensitiveIndicator" type="MISMOIndicator_Base">
+                    <xsd:annotation>
+                        <xsd:documentation>Allows producers and consumers of XML instance documents that are valid MISMO V3 documents to mark any data point to be treated as sensitive. MISMO recommends that any use of a data point labeled as "Sensitive Information" in the LDD ALWAYS have this attribute set to "true".</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attributeGroup ref="xlink:MISMOresourceLink">
+                    <xsd:annotation>
+                        <xsd:documentation>An xlink attribute group for defining the end point of a relationship.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attributeGroup>
+                <xsd:attributeGroup ref="AttributeExtension">
+                    <xsd:annotation>
+                        <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attributeGroup>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    Transform this to RDF/RDFS data type in TTL format.

@@ -1,0 +1,68 @@
+Below is the XSD snippet
+
+    <xsd:complexType name="ABOUT_VERSION">
+        <xsd:annotation>
+            <xsd:documentation>Information that identifies the version of the specification, software and/or data used for this transaction.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="AboutVersionIdentifier" type="MISMOIdentifier" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>A unique value that represents a user defined version identifier.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="CreatedDatetime" type="MISMODatetime" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The date and time at which the message, deal or document was created.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="DataReportedEffectiveDate" type="MISMODate" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>The effective as of reporting date of the data in the file.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="DataVersionIdentifier" type="MISMOIdentifier" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Specifies the data file version.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="DataVersionName" type="MISMOString" nillable="true" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Identifies the type of data file.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="EXTENSION" type="ABOUT_VERSION_EXTENSION" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="SequenceNumber" type="MISMOSequenceNumber_Base">
+            <xsd:annotation>
+                <xsd:documentation>An integer value used to provide an order to multi-instance sibling elements. The value must be unique for each sibling element.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attributeGroup ref="xlink:MISMOresourceLink">
+            <xsd:annotation>
+                <xsd:documentation>An xlink attribute group for defining the end point of a relationship.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+        <xsd:attributeGroup ref="AttributeExtension">
+            <xsd:annotation>
+                <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+    </xsd:complexType>
+
+
+Transform this to RDF/RDFS data type in TTL format.
+
+All types of the elements are rdfs.DataType  
+Example Datatypes are: MISMOIdentifier, MISMODatetime, MISMODate, MISMOSring etc.
+
+Ignore the below as these are extensions and do not need to be transformed.
+        <xsd:attributeGroup ref="xlink:MISMOresourceLink">
+            <xsd:annotation>
+                <xsd:documentation>An xlink attribute group for defining the end point of a relationship.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>
+        <xsd:attributeGroup ref="AttributeExtension">
+            <xsd:annotation>
+                <xsd:documentation>An implementation of the ability to extend an instance document by using any attribute. To change from Lax to make an redefinition restriction of AttributeExtension attribute group.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attributeGroup>

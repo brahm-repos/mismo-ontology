@@ -1,0 +1,26 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix mismo: <http://www.mismo.org/residential/2009/schemas#> .
+
+
+# Collection classes (Pattern 007) - using owl:Class
+mismo:ABOUT_VERSIONS a owl:Class ;
+    rdfs:label "About Versions Collection" ;
+    rdfs:comment "Information about one or more ABOUT_VERSION. Holds all occurrences of ABOUT_VERSION." ;
+    rdfs:subClassOf owl:Thing .
+
+# Element classes (Pattern 006) - using owl:Class
+mismo:ABOUT_VERSION a owl:Class ;
+    rdfs:label "About Version" ;
+    rdfs:comment "Information that identifies the version of the specification, software and/or data used for this transaction." ;
+    rdfs:subClassOf mismo:ABOUT_VERSIONS .
+
+# Object properties for containment
+mismo:containsABOUT_VERSION a owl:ObjectProperty ;
+    rdfs:label "contains ABOUT_VERSION" ;
+    rdfs:comment "Relates ABOUT_VERSIONS to individual ABOUT_VERSION instances" ;
+    owl:domain mismo:ABOUT_VERSIONS ;
+    owl:range mismo:ABOUT_VERSION ;
+    rdfs:subPropertyOf rdf:member .

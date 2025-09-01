@@ -1,0 +1,58 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix mismo: <http://www.mismo.org/residential/2009/schemas#> .
+
+# ABOUT_VERSION Complex Type Transformation to RDF/RDFS/OWL
+# Transformed from XSD complexType to proper RDF/RDFS/OWL class and property definitions
+
+# ABOUT_VERSION as the main class
+mismo:ABOUT_VERSION a rdfs:Class ;
+    rdfs:label "ABOUT_VERSION" ;
+    rdfs:comment "Information that identifies the version of the specification, software and/or data used for this transaction." .
+
+# AboutVersionIdentifier element as a datatype property of ABOUT_VERSION
+mismo:AboutVersionIdentifier a owl:DatatypeProperty ;
+    rdfs:label "AboutVersionIdentifier" ;
+    rdfs:comment "A unique value that represents a user defined version identifier." ;
+    rdfs:domain mismo:ABOUT_VERSION ;
+    rdfs:range mismo:MISMOIdentifier .
+
+# CreatedDatetime element as a datatype property of ABOUT_VERSION
+mismo:CreatedDatetime a owl:DatatypeProperty ;
+    rdfs:label "CreatedDatetime" ;
+    rdfs:comment "The date and time at which the message, deal or document was created." ;
+    rdfs:domain mismo:ABOUT_VERSION ;
+    rdfs:range mismo:MISMODatetime .
+
+# DataReportedEffectiveDate element as a datatype property of ABOUT_VERSION
+mismo:DataReportedEffectiveDate a owl:DatatypeProperty ;
+    rdfs:label "DataReportedEffectiveDate" ;
+    rdfs:comment "The effective as of reporting date of the data in the file." ;
+    rdfs:domain mismo:ABOUT_VERSION ;
+    rdfs:range mismo:MISMODate .
+
+# DataVersionIdentifier element as a datatype property of ABOUT_VERSION
+mismo:DataVersionIdentifier a owl:DatatypeProperty ;
+    rdfs:label "DataVersionIdentifier" ;
+    rdfs:comment "Specifies the data file version." ;
+    rdfs:domain mismo:ABOUT_VERSION ;
+    rdfs:range mismo:MISMOIdentifier .
+
+# DataVersionName element as a datatype property of ABOUT_VERSION
+mismo:DataVersionName a owl:DatatypeProperty ;
+    rdfs:label "DataVersionName" ;
+    rdfs:comment "Identifies the type of data file." ;
+    rdfs:domain mismo:ABOUT_VERSION ;
+    rdfs:range mismo:MISMOString .
+
+# SequenceNumber attribute as a datatype property of ABOUT_VERSION
+mismo:SequenceNumber a owl:DatatypeProperty ;
+    rdfs:label "SequenceNumber" ;
+    rdfs:comment "An integer value used to provide an order to multi-instance sibling elements. The value must be unique for each sibling element." ;
+    rdfs:domain mismo:ABOUT_VERSION ;
+    rdfs:range mismo:MISMOSequenceNumber_Base .
+
+# Note: EXTENSION element is not included as it references ABOUT_VERSION_EXTENSION
+# Note: xlink:MISMOresourceLink and AttributeExtension attribute groups are ignored as specified

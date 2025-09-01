@@ -1,0 +1,120 @@
+@prefix mismo: <http://www.mismo.org/residential/2009/schemas#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+# ========================================
+# MISMO Ontology Hierarchy Structure
+# ========================================
+
+# Collection classes (Pattern 007) - using owl:Class
+mismo:ABOUT_VERSIONS a owl:Class ;
+    rdfs:label "About Versions Collection" ;
+    rdfs:comment "A collection containing multiple ABOUT_VERSION instances" ;
+    rdfs:subClassOf owl:Thing .
+
+mismo:DEAL_SETS a owl:Class ;
+    rdfs:label "Deal Sets Collection" ;
+    rdfs:comment "A collection containing multiple DEAL_SET instances" ;
+    rdfs:subClassOf owl:Thing .
+
+mismo:DOCUMENT_SETS a owl:Class ;
+    rdfs:label "Document Sets Collection" ;
+    rdfs:comment "A collection containing multiple DOCUMENT_SET instances" ;
+    rdfs:subClassOf owl:Thing .
+
+# Element classes (Pattern 006) - using owl:Class
+mismo:ABOUT_VERSION a owl:Class ;
+    rdfs:label "About Version" ;
+    rdfs:comment "Individual version element contained in ABOUT_VERSIONS" ;
+    rdfs:subClassOf mismo:ABOUT_VERSIONS .
+
+mismo:DEAL_SET a owl:Class ;
+    rdfs:label "Deal Set" ;
+    rdfs:comment "Individual deal set element contained in DEAL_SETS" ;
+    rdfs:subClassOf mismo:DEAL_SETS .
+
+mismo:DOCUMENT_SET a owl:Class ;
+    rdfs:label "Document Set" ;
+    rdfs:comment "Individual document set element contained in DOCUMENT_SETS" ;
+    rdfs:subClassOf mismo:DOCUMENT_SETS .
+
+# Datatypes - using owl:Class for consistency
+mismo:MISMODate a owl:Class ;
+    rdfs:label "MISMO Date" ;
+    rdfs:comment "Date format used in MISMO" ;
+    rdfs:subClassOf xsd:date .
+
+mismo:MISMODatetime a owl:Class ;
+    rdfs:label "MISMO DateTime" ;
+    rdfs:comment "DateTime format used in MISMO" ;
+    rdfs:subClassOf xsd:dateTime .
+
+# ========================================
+# Containment Relationships
+# ========================================
+
+# Object properties for containment
+mismo:containsABOUT_VERSION a owl:ObjectProperty ;
+    rdfs:label "contains ABOUT_VERSION" ;
+    rdfs:comment "Relates ABOUT_VERSIONS to individual ABOUT_VERSION instances" ;
+    owl:domain mismo:ABOUT_VERSIONS ;
+    owl:range mismo:ABOUT_VERSION ;
+    rdfs:subPropertyOf rdf:member .
+
+mismo:containsDEAL_SET a owl:ObjectProperty ;
+    rdfs:label "contains DEAL_SET" ;
+    rdfs:comment "Relates DEAL_SETS to individual DEAL_SET instances" ;
+    owl:domain mismo:DEAL_SETS ;
+    owl:range mismo:DEAL_SET ;
+    rdfs:subPropertyOf rdf:member .
+
+mismo:containsDOCUMENT_SET a owl:ObjectProperty ;
+    rdfs:label "contains DOCUMENT_SET" ;
+    rdfs:comment "Relates DOCUMENT_SETS to individual DOCUMENT_SET instances" ;
+    owl:domain mismo:DOCUMENT_SETS ;
+    owl:range mismo:DOCUMENT_SET ;
+    rdfs:subPropertyOf rdf:member .
+
+# ========================================
+# OWL Restrictions for Hierarchy
+# ========================================
+
+# Collection contains elements
+mismo:ABOUT_VERSIONS rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty rdf:member ;
+    owl:someValuesFrom mismo:ABOUT_VERSION
+] .
+
+mismo:DEAL_SETS rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty rdf:member ;
+    owl:someValuesFrom mismo:DEAL_SET
+] .
+
+mismo:DOCUMENT_SETS rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty rdf:member ;
+    owl:someValuesFrom mismo:DOCUMENT_SET
+] .
+
+# Elements are members of collections
+mismo:ABOUT_VERSION rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty rdf:type ;
+    owl:hasValue mismo:ABOUT_VERSIONS
+] .
+
+mismo:DEAL_SET rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty rdf:type ;
+    owl:hasValue mismo:DEAL_SETS
+] .
+
+mismo:DOCUMENT_SET rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty rdf:type ;
+    owl:hasValue mismo:DOCUMENT_SETS
+] .

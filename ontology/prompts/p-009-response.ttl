@@ -1,0 +1,22 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix mismo: <http://www.mismo.org/residential/2009/schemas#> .
+
+# RELATIONSHIP Complex Type Transformation to RDF/RDFS
+# Transformed from XSD complexType to RDF/RDFS data type definitions
+
+# RELATIONSHIP as a class
+mismo:RELATIONSHIP a rdfs:Class ;
+    rdfs:label "RELATIONSHIP" ;
+    rdfs:comment "Uses xlink: attributes to connect locations in the document or at any URL by defining an arc and arc type and role. The scope of the endpoints of the relationship is the collection of siblings to its RELATIONSHIPS parent; it may be necessary to de-reference the content of those siblings to find an endpoint." .
+
+# SequenceNumber attribute as data type
+mismo:SequenceNumber a rdfs:Datatype ;
+    rdfs:label "SequenceNumber" ;
+    rdfs:comment "An integer value used to provide an order to multi-instance sibling elements. The value must be unique for each sibling element." ;
+    rdfs:subClassOf mismo:MISMOSequenceNumber_Base .
+
+# Note: xlink:MISMOarcLink attribute group is ignored as specified
+# Note: AttributeExtension attribute group is ignored as specified

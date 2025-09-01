@@ -1,0 +1,5 @@
+# MISMODate_Union - Union type combining different date formats
+mismo:MISMODate_Union a rdfs:Datatype ;
+    rdfs:label "MISMODate_Union" ;
+    rdfs:comment "A union datatype that accepts year (gYear), year-month (gYearMonth), or full date (date) formats" ;
+    rdfs:subClassOf xsd:gYear, xsd:gYearMonth, xsd:date .

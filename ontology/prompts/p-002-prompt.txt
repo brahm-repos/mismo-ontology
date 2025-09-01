@@ -1,0 +1,28 @@
+Below is the XSD snippet
+   <xsd:simpleType name="DataNotSuppliedReasonBase">
+        <xsd:restriction base="MISMOEnum_Base">
+            <xsd:enumeration value="NotCollected">
+                <xsd:annotation>
+                    <xsd:documentation>The creator of the MISMO message does not collect the data point.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="NotReceived">
+                <xsd:annotation>
+                    <xsd:documentation>The creator of the MISMO message can collect the data point, but has not received a value as of the time the file was created.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="NotRelevant">
+                <xsd:annotation>
+                    <xsd:documentation>The creator of the MISMO message can collect the data point, but did not ask for it because it is not germane to the context at hand. (One example is “cash out purpose type” for a purchase loan.)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Omitted">
+                <xsd:annotation>
+                    <xsd:documentation>The creator of the MISMO message has a value for the data point. However, they have a pertinent reason (such as confidentiality) for not including it in the message.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="Other"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    Transform this to RDF/RDFS data type in TTL format.

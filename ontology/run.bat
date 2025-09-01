@@ -1,0 +1,1 @@
+python transform.py "./mismo-3.6/MISMO_3.6.0_B367.xsd" mismo-3.6.ttl --skipimports
