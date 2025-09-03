@@ -34,7 +34,7 @@ logger = logging.getLogger(__name__)
 class MISMOXSDTransformer:
     """Transforms MISMO XSD to RDF/RDFS/OWL TTL format."""
     
-    def __init__(self):
+    def __init__(self, disable_pattern_007: bool = False):
         """Initialize the transformer."""
         self.transformed_types = set()
         self.ttl_statements = []
@@ -47,6 +47,7 @@ class MISMOXSDTransformer:
         self.pending_hierarchies: List[tuple[str, str]] = []
         self.complex_type_info: Dict[str, Dict[str, Any]] = {}
         self.hierarchy_data: Dict[str, List[Dict[str, str]]] = {}  # {parent_type: [contained_types]}
+        self.disable_pattern_007 = disable_pattern_007
         
     def add_prefixes(self):
         """Add standard prefixes to TTL output."""
@@ -150,6 +151,7 @@ class MISMOXSDTransformer:
             
             if contained_types:
                 self.hierarchy_data[type_name] = contained_types
+                logger.debug(f"  -> {type_name}: {contained_types}")
                 logger.debug(f"  -> {type_name}: {len(contained_types)} contained complex types")
         
         logger.info(f"  -> Built hierarchy data for {len(self.hierarchy_data)} parent types")
@@ -180,20 +182,27 @@ class MISMOXSDTransformer:
         # Check if this collection is referenced by other complex types
         for parent_type, contained_types in self.hierarchy_data.items():
             for contained in contained_types:
+                # First check by name (element name)
                 if contained['name'] == collection_name:
                     # This collection is contained by another type, so that's a parent
-                    logger.debug(f"    -> {collection_name}: Found parent {parent_type} from hierarchy data")
+                    logger.debug(f"    -> {collection_name}: Found parent {parent_type} from hierarchy data (by name)")
+                    if parent_type not in parents:
+                        parents.append(parent_type)
+                # If no match by name, check by type (complex type reference)
+                elif contained['type'] and contained['type'] == collection_name:
+                    # This collection is referenced by type, so that's a parent
+                    logger.debug(f"    -> {collection_name}: Found parent {parent_type} from hierarchy data (by type)")
                     if parent_type not in parents:
                         parents.append(parent_type)
         
-        # If no parents found in hierarchy, check if it's a top-level collection
-        # that should inherit from a root container (like MESSAGE)
-        if self._is_top_level_collection(collection_name):
-            root_container = self._find_root_container()
-            if root_container:
-                logger.debug(f"    -> {collection_name}: Top-level collection, inheriting from {root_container}")
-                if root_container not in parents:
-                    parents.append(root_container)
+        # # If no parents found in hierarchy, check if it's a top-level collection
+        # # that should inherit from a root container (like MESSAGE)
+        # if self._is_top_level_collection(collection_name):
+        #     root_container = self._find_root_container()
+        #     if root_container:
+        #         logger.debug(f"    -> {collection_name}: Top-level collection, inheriting from {root_container}")
+        #         if root_container not in parents:
+        #             parents.append(root_container)
         
         logger.debug(f"    -> {collection_name}: Found {len(parents)} parents: {parents}")
         return parents
@@ -436,10 +445,12 @@ class MISMOXSDTransformer:
                 base = extension.get('base')
                 if base:
                     # Base type
-                    statements.append(f"""mismo:{name} a rdfs:Datatype ;
+                    base_ttl = f"""mismo:{name} a rdfs:Datatype ;
     rdfs:label "{name}" ;
     rdfs:comment {self._format_comment_for_ttl(comment)} ;
-    rdfs:subClassOf {self._format_type_reference(base)} .""")
+    rdfs:subClassOf {self._format_type_reference(base)} ."""
+                    statements.append(base_ttl)
+                    logger.debug(f"Generated Base TTL:\n{self._format_ttl_for_logging(base_ttl)}")
                     
                     # Handle all attributes (ignorable ones are filtered out at element level)
                     for attr in extension.findall('.//xsd:attribute', self.namespaces):
@@ -455,210 +466,214 @@ class MISMOXSDTransformer:
                             
                             logger.debug(f"    -> Processing attribute: {attr_name} -> {prop_name}")
                             
-                            statements.append(f"""mismo:{prop_name} a owl:DatatypeProperty ;
+                            attr_ttl = f"""mismo:{prop_name} a owl:DatatypeProperty ;
     rdfs:label "{prop_name}" ;
     rdfs:comment {self._format_comment_for_ttl(attr_comment)} ;
     rdfs:domain mismo:{name} ;
-    rdfs:range {self._format_type_reference(attr_type)} .""")
+    rdfs:range {self._format_type_reference(attr_type)} ."""
+                            statements.append(attr_ttl)
+                            logger.debug(f"Generated Attribute TTL for '{prop_name}':\n{self._format_ttl_for_logging(attr_ttl)}")
         
+        logger.debug(f"=== Pattern 004: Completed {name} with {len(statements)} statements ===")
         return statements
     
-    def transform_complex_type_elements(self, element: ET.Element) -> List[str]:
-        """
-        Transform complex type with elements and attributes (Pattern 006).
-        """
-        statements = []
-        name = element.get('name')
-        if not name:
-            return statements
+    # def transform_complex_type_elements(self, element: ET.Element) -> List[str]:
+    #     """
+    #     Transform complex type with elements and attributes (Pattern 006).
+    #     """
+    #     statements = []
+    #     name = element.get('name')
+    #     if not name:
+    #         return statements
             
-        # Get documentation
-        doc = element.find('.//xsd:documentation', self.namespaces)
-        comment = doc.text if doc is not None else f"Complex type: {name}"
+    #     # Get documentation
+    #     doc = element.find('.//xsd:documentation', self.namespaces)
+    #     comment = doc.text if doc is not None else f"Complex type: {name}"
         
-        # Pattern 006: Complex types with elements and attributes should be owl:Class
-        # Use dynamic hierarchy to determine inheritance
-        logger.debug(f"      -> Main class {name} follows Pattern 006 -> owl:Class")
+    #     # Pattern 006: Complex types with elements and attributes should be owl:Class
+    #     # Use dynamic hierarchy to determine inheritance
+    #     logger.debug(f"      -> Main class {name} follows Pattern 006 -> owl:Class")
 
-        # Find parent types dynamically (supports multiple inheritance)
-        parent_types = self.get_parent_types(name)
-        if parent_types:
-            # Multiple inheritance: create multiple rdfs:subClassOf statements
-            statements.append(f"""mismo:{name} a owl:Class ;
-            rdfs:label "{name}" ;
-            rdfs:comment {self._format_comment_for_ttl(comment)} .""")
+    #     # Find parent types dynamically (supports multiple inheritance)
+    #     parent_types = self.get_parent_types(name)
+    #     if parent_types:
+    #         # Multiple inheritance: create multiple rdfs:subClassOf statements
+    #         statements.append(f"""mismo:{name} a owl:Class ;
+    #         rdfs:label "{name}" ;
+    #         rdfs:comment {self._format_comment_for_ttl(comment)} .""")
             
-            # Add each parent as a separate rdfs:subClassOf statement
-            for parent_type in parent_types:
-                statements.append(f"mismo:{name} rdfs:subClassOf mismo:{parent_type} .")
-                logger.debug(f"      -> {name} inherits from {parent_type}")
-        else:
-            # No parent found, inherit from owl:Thing
-            statements.append(f"""mismo:{name} a owl:Class ;
-            rdfs:label "{name}" ;
-            rdfs:comment {self._format_comment_for_ttl(comment)} ;
-            rdfs:subClassOf owl:Thing .""")
-            logger.debug(f"      -> {name} inherits from owl:Thing")
+    #         # Add each parent as a separate rdfs:subClassOf statement
+    #         for parent_type in parent_types:
+    #             statements.append(f"mismo:{name} rdfs:subClassOf mismo:{parent_type} .")
+    #             logger.debug(f"      -> {name} inherits from {parent_type}")
+    #     else:
+    #         # No parent found, inherit from owl:Thing
+    #         statements.append(f"""mismo:{name} a owl:Class ;
+    #         rdfs:label "{name}" ;
+    #         rdfs:comment {self._format_comment_for_ttl(comment)} ;
+    #         rdfs:subClassOf owl:Thing .""")
+    #         logger.debug(f"      -> {name} inherits from owl:Thing")
 
         
-        # Handle elements (ignore EXTENSION elements as per Pattern 006)
-        sequence = element.find('.//xsd:sequence', self.namespaces)
-        if sequence is not None:
-            for elem in sequence.findall('.//xsd:element', self.namespaces):
-                elem_name = elem.get('name')
-                elem_type = elem.get('type')
+    #     # Handle elements (ignore EXTENSION elements as per Pattern 006)
+    #     sequence = element.find('.//xsd:sequence', self.namespaces)
+    #     if sequence is not None:
+    #         for elem in sequence.findall('.//xsd:element', self.namespaces):
+    #             elem_name = elem.get('name')
+    #             elem_type = elem.get('type')
                 
-                # Pattern 006: Ignore EXTENSION elements
-                if self._should_ignore_element_name(elem_name):
-                    logger.debug(f"    -> Testing extension element: {elem_name} (type: {elem_type})")
-                    continue
+    #             # Pattern 006: Ignore EXTENSION elements
+    #             if self._should_ignore_element_name(elem_name):
+    #                 logger.debug(f"    -> Testing extension element: {elem_name} (type: {elem_type})")
+    #                 continue
                 
-                if elem_name and elem_type:
-                    # Get element documentation
-                    elem_doc = elem.find('.//xsd:documentation', self.namespaces)
-                    elem_comment = elem_doc.text if elem_doc is not None else f"Element: {elem_name}"
+    #             if elem_name and elem_type:
+    #                 # Get element documentation
+    #                 elem_doc = elem.find('.//xsd:documentation', self.namespaces)
+    #                 elem_comment = elem_doc.text if elem_doc is not None else f"Element: {elem_name}"
                     
-                    logger.debug(f"    -> Processing element: {elem_name} -> {elem_type}")
+    #                 logger.debug(f"    -> Processing element: {elem_name} -> {elem_type}")
                     
-                    # Pattern 006: All elements within complex types should be owl:DatatypeProperty
-                    # This follows the specification where elements are properties of the main class
-                    logger.debug(f"      -> Element {elem_name} as owl:DatatypeProperty with domain {name}")
-                    statements.append(f"""mismo:{elem_name} a owl:DatatypeProperty ;
-    rdfs:label "{elem_name}" ;
-    rdfs:comment {self._format_comment_for_ttl(elem_comment)} ;
-    rdfs:domain mismo:{name} ;
-    rdfs:range {self._format_type_reference(elem_type)} .""")
+    #                 # Pattern 006: All elements within complex types should be owl:DatatypeProperty
+    #                 # This follows the specification where elements are properties of the main class
+    #                 logger.debug(f"      -> Element {elem_name} as owl:DatatypeProperty with domain {name}")
+    #                 statements.append(f"""mismo:{elem_name} a owl:DatatypeProperty ;
+    # rdfs:label "{elem_name}" ;
+    # rdfs:comment {self._format_comment_for_ttl(elem_comment)} ;
+    # rdfs:domain mismo:{name} ;
+    # rdfs:range {self._format_type_reference(elem_type)} .""")
         
-        # Handle attributes
-        for attr in element.findall('.//xsd:attribute', self.namespaces):
-            attr_name = attr.get('name')
-            attr_type = attr.get('type')
-            if attr_name and attr_type:
-                # Get attribute documentation
-                attr_doc = attr.find('.//xsd:documentation', self.namespaces)
-                attr_comment = attr_doc.text if attr_doc is not None else f"Attribute: {attr_name}"
+    #     # Handle attributes
+    #     for attr in element.findall('.//xsd:attribute', self.namespaces):
+    #         attr_name = attr.get('name')
+    #         attr_type = attr.get('type')
+    #         if attr_name and attr_type:
+    #             # Get attribute documentation
+    #             attr_doc = attr.find('.//xsd:documentation', self.namespaces)
+    #             attr_comment = attr_doc.text if attr_doc is not None else f"Attribute: {attr_name}"
                 
-                # Pattern 006: Attributes should be owl:DatatypeProperty with proper domain and range
-                statements.append(f"""mismo:{attr_name} a owl:DatatypeProperty ;
-    rdfs:label "{attr_name}" ;
-    rdfs:comment {self._format_comment_for_ttl(attr_comment)} ;
-    rdfs:domain mismo:{name} ;
-    rdfs:range {self._format_type_reference(attr_type)} .""")
+    #             # Pattern 006: Attributes should be owl:DatatypeProperty with proper domain and range
+    #             statements.append(f"""mismo:{attr_name} a owl:DatatypeProperty ;
+    # rdfs:label "{attr_name}" ;
+    # rdfs:comment {self._format_comment_for_ttl(attr_comment)} ;
+    # rdfs:domain mismo:{name} ;
+    # rdfs:range {self._format_type_reference(attr_type)} .""")
         
-        return statements
+    #     return statements
     
-    def transform_collection_type(self, element: ET.Element) -> List[str]:
-        """
-        Transform collection type (Pattern 007) using dynamic hierarchy data.
+    # def transform_collection_type(self, element: ET.Element) -> List[str]:
+    #     """
+    #     Transform collection type (Pattern 007) using dynamic hierarchy data.
 
-        Args:
-            element: XSD complexType element representing a collection
+    #     Args:
+    #         element: XSD complexType element representing a collection
             
-        Returns:
-            List of TTL statements
-        """
-        statements = []
-        name = element.get('name')
-        if not name:
-            return statements
+    #     Returns:
+    #         List of TTL statements
+    #     """
+    #     statements = []
+    #     name = element.get('name')
+    #     if not name:
+    #         return statements
             
-        # Get documentation
-        doc = element.find('.//xsd:documentation', self.namespaces)
-        comment = doc.text if doc is not None else f"Collection type: {name}"
+    #     # Get documentation
+    #     doc = element.find('.//xsd:documentation', self.namespaces)
+    #     comment = doc.text if doc is not None else f"Collection type: {name}"
 
-        # Use dynamic hierarchy data to find contained complex types
-        if name not in self.hierarchy_data:
-            logger.debug(f"    -> {name}: No hierarchy data found, skipping Pattern 007")
-            return statements
+    #     # Use dynamic hierarchy data to find contained complex types
+    #     if name not in self.hierarchy_data:
+    #         logger.debug(f"    -> {name}: No hierarchy data found, skipping Pattern 007")
+    #         return statements
             
-        contained_types = self.hierarchy_data[name]
-        has_unbounded_elements = False
+    #     contained_types = self.hierarchy_data[name]
+    #     has_unbounded_elements = False
 
-        for contained in contained_types:
-            elem_name = contained['name']
-            elem_type = contained['type']
-            max_occurs = contained['max_occurs']
+    #     for contained in contained_types:
+    #         elem_name = contained['name']
+    #         elem_type = contained['type']
+    #         max_occurs = contained['max_occurs']
             
-            # Check if this is an unbounded element (collection indicator)
-            if max_occurs == 'unbounded':
-                has_unbounded_elements = True
+    #         # Check if this is an unbounded element (collection indicator)
+    #         if max_occurs == 'unbounded':
+    #             has_unbounded_elements = True
                 
-                # Pattern 007: Ignore EXTENSION elements
-                if self._should_ignore_element_name(elem_name):
-                    logger.debug(f"    -> Skipping extension element: {elem_name} (type: {elem_type})")
-                    continue
+    #             # Pattern 007: Ignore EXTENSION elements
+    #             if self._should_ignore_element_name(elem_name):
+    #                 logger.debug(f"    -> Skipping extension element: {elem_name} (type: {elem_type})")
+    #                 continue
                 
-                # Collection class - modeled as owl:Class (Pattern 007 requirement)
-                # Use dynamic hierarchy to determine inheritance (supports multiple parents)
-                parent_types = self._determine_collection_parents(name)
-                if parent_types:
-                    # Multiple inheritance: create multiple rdfs:subClassOf statements
-                    statements.append(f"""mismo:{name} a owl:Class ;
-    rdfs:label "{name}" ;
-    rdfs:comment {self._format_comment_for_ttl(f"A collection containing multiple {elem_name} instances. {comment}")} .""")
+    #             # Collection class - modeled as owl:Class (Pattern 007 requirement)
+    #             # Use dynamic hierarchy to determine inheritance (supports multiple parents)
+    #             parent_types = self._determine_collection_parents(name)
+    #             if parent_types:
+    #                 # Multiple inheritance: create multiple rdfs:subClassOf statements
+    #                 statements.append(f"""mismo:{name} a owl:Class ;
+    # rdfs:label "{name}" ;
+    # rdfs:comment {self._format_comment_for_ttl(f"A collection containing multiple {elem_name} instances. {comment}")} .""")
                     
-                    # Add each parent as a separate rdfs:subClassOf statement
-                    for parent_type in parent_types:
-                        statements.append(f"mismo:{name} rdfs:subClassOf mismo:{parent_type} .")
-                        logger.debug(f"      -> {name} inherits from {parent_type}")
-                else:
-                    statements.append(f"""mismo:{name} a owl:Class ;
-    rdfs:label "{name}" ;
-    rdfs:comment {self._format_comment_for_ttl(f"A collection containing multiple {elem_name} instances. {comment}")} ;
-    rdfs:subClassOf owl:Thing .""")
-                    logger.debug(f"      -> {name} inherits from owl:Thing")
+    #                 # Add each parent as a separate rdfs:subClassOf statement
+    #                 for parent_type in parent_types:
+    #                     statements.append(f"mismo:{name} rdfs:subClassOf mismo:{parent_type} .")
+    #                     logger.debug(f"      -> {name} inherits from {parent_type}")
+    #             else:
+    #                 statements.append(f"""mismo:{name} a owl:Class ;
+    # rdfs:label "{name}" ;
+    # rdfs:comment {self._format_comment_for_ttl(f"A collection containing multiple {elem_name} instances. {comment}")} ;
+    # rdfs:subClassOf owl:Thing .""")
+    #                 logger.debug(f"      -> {name} inherits from owl:Thing")
                 
-                # Contained class - always owl:Class with proper hierarchy (Pattern 007 requirement)
-                statements.append(f"""mismo:{elem_name} a owl:Class ;
-        rdfs:label "{elem_name}" ;
-        rdfs:comment {self._format_comment_for_ttl(f"Individual {elem_name} element contained in {name} collection")} ;
-        rdfs:subClassOf mismo:{name} .""")
+    #             # Contained class - always owl:Class with proper hierarchy (Pattern 007 requirement)
+    #             statements.append(f"""mismo:{elem_name} a owl:Class ;
+    #     rdfs:label "{elem_name}" ;
+    #     rdfs:comment {self._format_comment_for_ttl(f"Individual {elem_name} element contained in {name} collection")} ;
+    #     rdfs:subClassOf mismo:{name} .""")
                 
-                # Collection relationship property - establishes containment hierarchy
-                statements.append(f"""mismo:contains{elem_name} a owl:ObjectProperty ;
-        rdfs:label "contains {elem_name}" ;
-        rdfs:comment {self._format_comment_for_ttl(f"Relates {name} to individual {elem_name} instances")} ;
-        owl:domain mismo:{name} ;
-        owl:range mismo:{elem_name} ;
-        rdfs:subPropertyOf rdf:member .""")
+    #             # Collection relationship property - establishes containment hierarchy
+    #             statements.append(f"""mismo:contains{elem_name} a owl:ObjectProperty ;
+    #     rdfs:label "contains {elem_name}" ;
+    #     rdfs:comment {self._format_comment_for_ttl(f"Relates {name} to individual {elem_name} instances")} ;
+    #     owl:domain mismo:{name} ;
+    #     owl:range mismo:{elem_name} ;
+    #     rdfs:subPropertyOf rdf:member .""")
                 
-                # Track the collection-element relationship for hierarchy consistency
-                self.track_collection_element_relationship(name, elem_name)
+    #             # Track the collection-element relationship for hierarchy consistency
+    #             self.track_collection_element_relationship(name, elem_name)
                 
-                break
+    #             break
 
-        # Special case: MESSAGE is a root container that should always be generated
-        # even if it doesn't contain maxOccurs="unbounded" elements
-        if name == 'MESSAGE' and not has_unbounded_elements:
-            logger.debug(f"    -> {name}: Special case - root container without unbounded elements")
-            statements.append(f"""mismo:{name} a owl:Class ;
-        rdfs:label "{name}" ;
-        rdfs:comment {self._format_comment_for_ttl(f"Root container for MISMO message. {comment}")} ;
-        rdfs:subClassOf owl:Thing .""")
+    #     # Special case: MESSAGE is a root container that should always be generated
+    #     # even if it doesn't contain maxOccurs="unbounded" elements
+    #     if name == 'MESSAGE' and not has_unbounded_elements:
+    #         logger.debug(f"    -> {name}: Special case - root container without unbounded elements")
+    #         statements.append(f"""mismo:{name} a owl:Class ;
+    #     rdfs:label "{name}" ;
+    #     rdfs:comment {self._format_comment_for_ttl(f"Root container for MISMO message. {comment}")} ;
+    #     rdfs:subClassOf owl:Thing .""")
 
-        # Use dynamic hierarchy to determine if this should be a collection class
-        # even if it doesn't contain maxOccurs="unbounded" elements
-        elif not has_unbounded_elements:
-            # Check if this should be a collection based on dynamic hierarchy
-            parent_types = self._determine_collection_parents(name)
-            if parent_types:
-                # Multiple inheritance: create multiple rdfs:subClassOf statements
-                statements.append(f"""mismo:{name} a owl:Class ;
-        rdfs:label "{name}" ;
-        rdfs:comment {self._format_comment_for_ttl(f"Collection class with multiple inheritance. {comment}")} .""")
+    #     # Use dynamic hierarchy to determine if this should be a collection class
+    #     # even if it doesn't contain maxOccurs="unbounded" elements
+    #     elif not has_unbounded_elements:
+    #         # Check if this should be a collection based on dynamic hierarchy
+    #         parent_types = self._determine_collection_parents(name)
+    #         if parent_types:
+    #             # Multiple inheritance: create multiple rdfs:subClassOf statements
+    #             statements.append(f"""mismo:{name} a owl:Class ;
+    #     rdfs:label "{name}" ;
+    #     rdfs:comment {self._format_comment_for_ttl(f"Collection class with multiple inheritance. {comment}")} .""")
                 
-                # Add each parent as a separate rdfs:subClassOf statement
-                for parent_type in parent_types:
-                    statements.append(f"mismo:{name} rdfs:subClassOf mismo:{parent_type} .")
-                    logger.debug(f"      -> {name} inherits from {parent_type}")
-            else:
-                logger.debug(f"    -> {name}: No parent found, inheriting from owl:Thing")
-                statements.append(f"""mismo:{name} a owl:Class ;
-        rdfs:label "{name}" ;
-        rdfs:comment {self._format_comment_for_ttl(f"Collection class. {comment}")} ;
-        rdfs:subClassOf owl:Thing .""")
+    #             # Add each parent as a separate rdfs:subClassOf statement
+    #             for parent_type in parent_types:
+    #                 statements.append(f"mismo:{name} rdfs:subClassOf mismo:{parent_type} .")
+    #                 logger.debug(f"      -> {name} inherits from {parent_type}")
+    #         else:
+    #             logger.debug(f"    -> {name}: No parent found, inheriting from owl:Thing")
+    #             statements.append(f"""mismo:{name} a owl:Class ;
+                
+    #     rdfs:label "{name}" ;
+    #     rdfs:comment {self._format_comment_for_ttl(f"Collection class. {comment}")} ;
+    #     rdfs:subClassOf owl:Thing .""")
 
-        return statements
+    #     return statements
 
     def transform_complex_type_attributes_only(self, element: ET.Element) -> List[str]:
         """
@@ -695,12 +710,15 @@ class MISMOXSDTransformer:
                 attr_comment = attr_doc.text if attr_doc is not None else f"Attribute: {attr_name}"
                 
                 # Pattern 009: Attributes should be owl:DatatypeProperty with proper domain and range
-                statements.append(f"""mismo:{attr_name} a owl:DatatypeProperty ;
+                attr_ttl = f"""mismo:{attr_name} a owl:DatatypeProperty ;
     rdfs:label "{attr_name}" ;
     rdfs:comment {self._format_comment_for_ttl(attr_comment)} ;
     rdfs:domain mismo:{name} ;
-    rdfs:range {self._format_type_reference(attr_type)} .""")
+    rdfs:range {self._format_type_reference(attr_type)} ."""
+                statements.append(attr_ttl)
+                logger.debug(f"Generated Attribute TTL for '{attr_name}':\n{self._format_ttl_for_logging(attr_ttl)}")
         
+        logger.debug(f"=== Pattern 009: Completed {name} with {len(statements)} statements ===")
         return statements
     
     def establish_class_hierarchies(self) -> List[str]:
@@ -1059,29 +1077,40 @@ mismo:{collection_name} rdfs:subClassOf owl:Thing .""")
     def is_collection_type(self, element: ET.Element) -> bool:
         """Check if element is a collection type."""
         name = element.get('name', 'UNNAMED')
-        
+        logger.debug(f"    --> Checking if {name} is a collection type...")
         # Method 1: Check if this complexType contains elements with maxOccurs="unbounded"
         sequence = element.find('.//xsd:sequence', self.namespaces)
         if sequence is not None:
             for elem in sequence.findall('.//xsd:element', self.namespaces):
-                max_occurs = elem.get('maxOccurs')
-                if max_occurs == 'unbounded':
-                    elem_name = elem.get('name', 'UNKNOWN')
-                    logger.debug(f"    -> {name}: COLLECTION TYPE detected - contains element '{elem_name}' with maxOccurs='unbounded'")
-                    return True
+                elem_type = elem.get('type')
+                # Check if the element is of type owl:Class (refer to complex_type_info)
+                if elem_type and elem_type in self.complex_type_info:
+                    logger.debug(f"    -> checking if {elem_type} is owl:Class?")
+                    
+                    # Check if the element type is Pattern 004 (simple content) - exclude from collection type
+                    # Get the element from complex_type_info
+                    if elem_type in self.complex_type_info:
+                        elem_type_element = self.complex_type_info[elem_type]['element']
+                        if elem_type_element and self.isPattern004(elem_type_element):
+                            logger.debug(f"    -> {elem_type} is Pattern 004 (simple content) - ignoring and continue")
+                            continue
+                        # Check if the element type is Pattern 005 (EXTENSION) - exclude from collection type
+                        if elem_type_element and self.isPattern005(elem_type_element):
+                            logger.debug(f"    -> {elem_type} is Pattern 005 (EXTENSION) - ignoring and continue")
+                            continue
+                    else:
+                        # If not in complex_type_info, assume it's not owl:Class and continue
+                        logger.debug(f"    -> {elem_type} not found in complex_type_info - assuming not owl:Class")
+                        continue
+                    
+                    if self.complex_type_info[elem_type]['is_owl_class']:
+                        elem_name = elem.get('name', 'UNKNOWN')
+                        logger.debug(f"    -> {name}: COLLECTION TYPE detected - contains element '{elem_name}' of type owl:Class '{elem_type}'")
+                        return True
+                    else:
+                        logger.debug(f"    -> {elem_type} is NOT owl:Class.")
         
-        # Method 2: Check if this complexType is referenced elsewhere as an element with maxOccurs="unbounded"
-        # This handles cases like MESSAGE where the complexType itself is referenced as a collection element
-        if hasattr(self, '_xsd_root') and self._xsd_root is not None:
-            # Search for element references to this complexType with maxOccurs="unbounded"
-            for elem_ref in self._xsd_root.findall('.//xsd:element', self.namespaces):
-                elem_type = elem_ref.get('type')
-                max_occurs = elem_ref.get('maxOccurs')
-                if (elem_type == name and max_occurs == 'unbounded'):
-                    logger.debug(f"    -> {name}: COLLECTION TYPE detected - referenced as element with maxOccurs='unbounded'")
-                    return True
-        
-        # Method 3: Check naming conventions for collection types
+        # Method 2: Check naming conventions for collection types
         # Many MISMO collection types follow specific naming patterns
         collection_name_indicators = [
             'MESSAGE', 'MESSAGES', 'VERSIONS', 'SETS', 'RELATIONSHIPS', 'SIGNATURES', 
@@ -1184,6 +1213,71 @@ mismo:{collection_name} rdfs:subClassOf owl:Thing .""")
         except Exception as e:
             return ttl_statement
 
+    def isPattern003(self, element: ET.Element) -> bool:
+        """
+        Check if element matches Pattern 003: Complex types with xsd:any elements.
+        
+        Args:
+            element: XSD element to check
+            
+        Returns:
+            True if element matches Pattern 003, False otherwise
+        """
+        name = element.get('name', 'UNNAMED')
+        logger.debug(f"        -> Checking if {name} is Pattern 003 (xsd:any)...")
+        
+        # Check for MISMO_BASE pattern (Pattern 003) - xsd:any elements
+        any_element = element.find('.//xsd:any', self.namespaces)
+        if any_element is not None:
+            logger.debug(f"        -> Found xsd:any element -> Pattern 003")
+            return True
+        else:
+            logger.debug(f"        -> No xsd:any found. Not Pattern 003")
+            return False
+
+    def isPattern005(self, element: ET.Element) -> bool:
+        """
+        Check if element matches Pattern 005: Extension patterns with multiple element types.
+        
+        Args:
+            element: XSD element to check
+            
+        Returns:
+            True if element matches Pattern 005, False otherwise
+        """
+        name = element.get('name', 'UNNAMED')
+        logger.debug(f"        -> Checking if {name} is Pattern 005 (EXTENSION)...")
+        
+        # Check for EXTENSION pattern (Pattern 005)
+        if element.tag.endswith('EXTENSION') or self._is_extension_pattern(element):
+            logger.debug(f"        -> {name} is EXTENSION pattern -> Pattern 005")
+            return True
+        else:
+            logger.debug(f"        -> {name} is NOT EXTENSION pattern. Not Pattern 005")
+            return False
+
+    def isPattern004(self, element: ET.Element) -> bool:
+        """
+        Check if element matches Pattern 004: Complex types with simple content and attributes.
+        
+        Args:
+            element: XSD element to check
+            
+        Returns:
+            True if element matches Pattern 004, False otherwise
+        """
+        name = element.get('name', 'UNNAMED')
+        logger.debug(f"        -> Checking if {name} is Pattern 004 (xsd:simpleContent)...")
+        
+        # Check for simple content (Pattern 004)
+        simple_content = element.find('.//xsd:simpleContent', self.namespaces)
+        if simple_content is not None:
+            logger.debug(f"        -> Found xsd:simpleContent element -> Pattern 004")
+            return True
+        else:
+            logger.debug(f"        -> No xsd:simpleContent found. Not Pattern 004")
+            return False
+
     def find_pattern_type(self, element: ET.Element) -> str:
         """
         Determine which transformation pattern an XSD element belongs to based on patterns
@@ -1243,29 +1337,17 @@ mismo:{collection_name} rdfs:subClassOf owl:Thing .""")
         elif tag.endswith('complexType'):
             logger.debug(f"      -> Element {name} is complexType, checking sub-patterns...")
             
-            # Check for MISMO_BASE pattern (Pattern 003) FIRST - before ignore check
-            any_element = element.find('.//xsd:any', self.namespaces)
-            if any_element is not None:
-                logger.debug(f"        -> Found xsd:any element -> Pattern 003")
+            # Check for Pattern 003 (xsd:any elements) FIRST
+            if self.isPattern003(element):
                 return "Pattern 003"
-            else:
-                logger.debug(f"        -> No xsd:any found")
             
-            # Check for EXTENSION pattern (Pattern 005) BEFORE other complexType checks
-            logger.debug(f"        -> Checking if {name} is EXTENSION pattern...")
-            if element.tag.endswith('EXTENSION') or self._is_extension_pattern(element):
-                logger.debug(f"        -> {name} is EXTENSION pattern -> Pattern 005")
+            # Check for Pattern 005 (EXTENSION pattern)
+            if self.isPattern005(element):
                 return "Pattern 005"
-            else:
-                logger.debug(f"        -> {name} is NOT EXTENSION pattern")
             
-            # Check for simple content (Pattern 004)
-            simple_content = element.find('.//xsd:simpleContent', self.namespaces)
-            if simple_content is not None:
-                logger.debug(f"        -> Found xsd:simpleContent element -> Pattern 004")
+            # Check for Pattern 004 (simple content)
+            if self.isPattern004(element):
                 return "Pattern 004"
-            else:
-                logger.debug(f"        -> No xsd:simpleContent found")
             
             # Check for collection type (Pattern 007)
             logger.debug(f"        -> Checking if {name} is collection type...")
@@ -1273,7 +1355,7 @@ mismo:{collection_name} rdfs:subClassOf owl:Thing .""")
                 logger.debug(f"        -> {name} is collection type -> Pattern 007")
                 return "Pattern 007"
             else:
-                logger.debug(f"        -> {name} is NOT collection type")
+                logger.debug(f"        -> {name} is NOT collection type. not Pattern 007")
             
             # Check for attributes only (Pattern 009)
             logger.debug(f"        -> Checking if {name} has only attributes...")
@@ -1743,119 +1825,266 @@ mismo:{collection_name} rdfs:subClassOf owl:Thing .""")
         logger.debug(f"=== Pattern 006: Completed {name} with {len(statements)} statements ===")
         return statements
 
-    def transform_pattern_007(self, element: ET.Element) -> List[str]:
+    # def transform_pattern_007(self, element: ET.Element) -> List[str]:
+    #     """
+    #     Transform Pattern 007: Collection types (containing multiple instances).
+    #     Contains all logic for Pattern 007 transformation.
+    #     """
+    #     statements = []
+    #     name = element.get('name')
+    #     if not name:
+    #         return statements
+        
+    #     # Log element info with formatted XSD snippet
+    #     logger.debug(f"=== Pattern 007: Processing {name} ===")
+    #     logger.debug(f"Element type: {element.tag}")
+    #     logger.debug(f"XSD Structure:\n{self._format_xsd_snippet_for_logging(element)}")
+            
+    #     # Get documentation
+    #     doc = element.find('.//xsd:documentation', self.namespaces)
+    #     comment = doc.text if doc is not None else f"Collection type: {name}"
+
+    #     # Use dynamic hierarchy data to find contained complex types
+    #     if name not in self.hierarchy_data:
+    #         logger.debug(f"    -> {name}: No hierarchy data found, skipping Pattern 007")
+    #         logger.debug(f"=== Pattern 007: Completed {name} with 0 statements (no hierarchy data) ===")
+    #         return statements
+            
+    #     contained_types = self.hierarchy_data[name]
+    #     has_unbounded_elements = False
+    #     logger.debug(f"    -> Contained types: {contained_types}")
+
+    #     for contained in contained_types:
+    #         elem_name = contained['name']
+    #         elem_type = contained['type']
+    #         max_occurs = contained['max_occurs']
+    #         logger.debug(f"      -> Processing element: {elem_name} -> {elem_type} -> {max_occurs}")
+            
+    #         # Check if this is an unbounded element (collection indicator)
+    #         if max_occurs == 'unbounded':
+    #             has_unbounded_elements = True
+                
+    #             # Pattern 007: Ignore EXTENSION elements
+    #             if self._should_ignore_element_name(elem_name):
+    #                 logger.debug(f"      -> Skipping extension element: {elem_name} (type: {elem_type})")
+    #                 continue
+                
+    #             # Collection class - modeled as owl:Class (Pattern 007 requirement)
+    #             # Use dynamic hierarchy to determine inheritance (supports multiple parents)
+    #             parent_types = self._determine_collection_parents(name)
+    #             if parent_types:
+    #                 # Multiple inheritance: create multiple rdfs:subClassOf statements
+    #                 statements.append(f"""mismo:{name} a owl:Class ;
+    # rdfs:label "{name}" ;
+    # rdfs:comment {self._format_comment_for_ttl(f"A collection containing multiple {elem_name} instances. {comment}")} .""")
+                    
+    #                 # Add each parent as a separate rdfs:subClassOf statement
+    #                 for parent_type in parent_types:
+    #                     statements.append(f"mismo:{name} rdfs:subClassOf mismo:{parent_type} .")
+    #                     logger.debug(f"      -> {name} inherits from {parent_type}")
+    #             else:
+    #                 statements.append(f"""mismo:{name} a owl:Class ;
+    # rdfs:label "{name}" ;
+    # rdfs:comment {self._format_comment_for_ttl(f"A collection containing multiple {elem_name} instances. {comment}")} ;
+    # rdfs:subClassOf owl:Thing .""")
+    #                 logger.debug(f"      -> {name} inherits from owl:Thing")
+                
+    #             # Contained class - always owl:Class with proper hierarchy (Pattern 007 requirement)
+    #             statements.append(f"""mismo:{elem_name} a owl:Class ;
+    #     rdfs:label "{elem_name}" ;
+    #     rdfs:comment {self._format_comment_for_ttl(f"Individual {elem_name} element contained in {name} collection")} ;
+    #     rdfs:subClassOf mismo:{name} .""")
+                
+    #             # Collection relationship property - establishes containment hierarchy
+    #             statements.append(f"""mismo:contains{elem_name} a owl:ObjectProperty ;
+    #     rdfs:label "contains {elem_name}" ;
+    #     rdfs:comment {self._format_comment_for_ttl(f"Relates {name} to individual {elem_name} instances")} ;
+    #     owl:domain mismo:{name} ;
+    #     owl:range mismo:{elem_name} ;
+    #     rdfs:subPropertyOf rdf:member .""")
+                
+    #             # Track the collection-element relationship for hierarchy consistency
+    #             self.track_collection_element_relationship(name, elem_name)
+                
+    #             break
+
+    #     logger.debug(f"    -> Done with contained types")
+    #     logger.debug(f"    -> has_unbounded_elements: {has_unbounded_elements}")
+    #     # Special case: MESSAGE is a root container that should always be generated
+    #     # even if it doesn't contain maxOccurs="unbounded" elements
+    #     if name == 'MESSAGE' and not has_unbounded_elements:
+    #         logger.debug(f"    -> {name}: Special case - root container without unbounded elements")
+    #         statements.append(f"""mismo:{name} a owl:Class ;
+    #         rdfs:label "{name}" ;
+    #         rdfs:comment {self._format_comment_for_ttl(f"Root container for MISMO message. {comment}")} ;
+    #         rdfs:subClassOf owl:Thing .""")
+
+    #     # Use dynamic hierarchy to determine if this should be a collection class
+    #     # even if it doesn't contain maxOccurs="unbounded" elements
+    #     elif not has_unbounded_elements:
+    #         # Check if this should be a collection based on dynamic hierarchy
+    #         parent_types = self._determine_collection_parents(name)
+    #         if parent_types:
+    #             # Multiple inheritance: create multiple rdfs:subClassOf statements
+    #             statements.append(f"""mismo:{name} a owl:Class ;
+    #     rdfs:label "{name}" ;
+    #     rdfs:comment {self._format_comment_for_ttl(f"Collection class with multiple inheritance. {comment}")} .""")
+                
+    #             # Add each parent as a separate rdfs:subClassOf statement
+    #             for parent_type in parent_types:
+    #                 statements.append(f"mismo:{name} rdfs:subClassOf mismo:{parent_type} .")
+    #                 logger.debug(f"      -> {name} inherits from {parent_type}")
+    #         else:
+    #             logger.debug(f"    -> {name}: No parent found, inheriting from owl:Thing")
+    #             statements.append(f"""mismo:{name} a owl:Class ;
+                
+    #     rdfs:label "{name}" ;
+    #     rdfs:comment {self._format_comment_for_ttl(f"Collection class. {comment}")} ;
+    #     rdfs:subClassOf owl:Thing .""")
+
+
+    #             logger.debug(f"=== Pattern 007: Completed {name} with {len(statements)} statements ===")
+    #     logger.debug(f"Generated statements for {name}:")
+    #     for i, statement in enumerate(statements):
+    #         logger.debug(f"  Statement {i+1}: {statement}")
+              
+    #     return statements
+
+    def transform_pattern_007_new(self, element: ET.Element) -> List[str]:
         """
         Transform Pattern 007: Collection types (containing multiple instances).
-        Contains all logic for Pattern 007 transformation.
+        NEW APPROACH: Reads each element/attribute directly from XML structure.
+        This approach is more explicit and easier to understand.
         """
         statements = []
         name = element.get('name')
+        # elem_type = element.get('type')
         if not name:
             return statements
         
         # Log element info with formatted XSD snippet
-        logger.debug(f"=== Pattern 007: Processing {name} ===")
-        logger.debug(f"Element type: {element.tag}")
+        logger.debug(f"=== Pattern 007 NEW: Processing {name}  ===")
         logger.debug(f"XSD Structure:\n{self._format_xsd_snippet_for_logging(element)}")
             
         # Get documentation
         doc = element.find('.//xsd:documentation', self.namespaces)
         comment = doc.text if doc is not None else f"Collection type: {name}"
-
-        # Use dynamic hierarchy data to find contained complex types
+        
+        # Use dynamic hierarchy data to find contained complex types (like original method)
         if name not in self.hierarchy_data:
             logger.debug(f"    -> {name}: No hierarchy data found, skipping Pattern 007")
-            logger.debug(f"=== Pattern 007: Completed {name} with 0 statements (no hierarchy data) ===")
+            logger.debug(f"=== Pattern 007 NEW: Completed {name} with 0 statements (no hierarchy data) ===")
             return statements
             
         contained_types = self.hierarchy_data[name]
-        has_unbounded_elements = False
-
+        logger.debug(f"    -> Contained types from hierarchy data: {contained_types}")
+        
+        # Generate the main collection class first (always needed for Pattern 007)
+        parent_types = self._determine_collection_parents(name)
+        logger.debug(f"    -> Parent types for {name} : {parent_types}")
+        
+        if parent_types:
+            # Multiple inheritance: create multiple rdfs:subClassOf statements
+            class_ttl = f"""mismo:{name} a owl:Class ;
+    rdfs:label "{name}" ;
+    rdfs:comment {self._format_comment_for_ttl(f"A collection containing multiple instances. {comment}")} ."""
+            statements.append(class_ttl)
+            logger.debug(f"    -> Generated collection class with multiple inheritance")
+            
+            # Add each parent as a separate rdfs:subClassOf statement
+            for parent_type in parent_types:
+                parent_ttl = f"mismo:{name} rdfs:subClassOf mismo:{parent_type} ."
+                statements.append(parent_ttl)
+                logger.debug(f"    -> Added parent: {parent_type}")
+        else:
+            # Single inheritance from owl:Thing
+            class_ttl = f"""mismo:{name} a owl:Class ;
+    rdfs:label "{name}" ;
+    rdfs:comment {self._format_comment_for_ttl(f"A collection containing multiple instances. {comment}")} ;
+    rdfs:subClassOf owl:Thing ."""
+            statements.append(class_ttl)
+            logger.debug(f"    -> Generated collection class with owl:Thing inheritance")
+        
+        # Process contained types from hierarchy data (like original method)
         for contained in contained_types:
             elem_name = contained['name']
             elem_type = contained['type']
             max_occurs = contained['max_occurs']
+            logger.debug(f"      -> Processing element: {elem_name} -> {elem_type} -> {max_occurs}")
             
-            # Check if this is an unbounded element (collection indicator)
-            if max_occurs == 'unbounded':
-                has_unbounded_elements = True
+            # Process ALL contained types (both bounded and unbounded)
+            logger.debug(f"      -> Processing element: {elem_name} (maxOccurs={max_occurs})")
+            
+            # Check if this is an EXTENSION element (complex type reference)
+            if elem_name == "EXTENSION" and elem_type.endswith('_EXTENSION'):
+                # Pattern 007: EXTENSION elements should be owl:ObjectProperty for complex type relationships
+                # Use owl:Thing as range for Pattern 005 classes to avoid broken references
+                logger.debug(f"      -> EXTENSION element {elem_name} as owl:ObjectProperty with domain {name}")
+                property_name = "hasExtension"
+                property_ttl = f"""mismo:{property_name} a owl:ObjectProperty ;
+        rdfs:label {self._format_comment_for_ttl("has extension")} ;
+        rdfs:comment {self._format_comment_for_ttl(f"Property representing the {elem_name} element of type {elem_type}")} ;
+        rdfs:domain mismo:{name} ;
+        rdfs:range owl:Thing ."""
+                statements.append(property_ttl)
+                logger.debug(f"      -> Generated EXTENSION Property TTL for '{elem_name}':\n{self._format_ttl_for_logging(property_ttl)}")
+                continue
+            
+            # Check if the element type is owl:Class
+            if elem_type and elem_type in self.complex_type_info and self.complex_type_info[elem_type]['is_owl_class']:
+                logger.debug(f"      -> Element {elem_name} is owl:Class type: {elem_type}")
                 
-                # Pattern 007: Ignore EXTENSION elements
-                if self._should_ignore_element_name(elem_name):
-                    logger.debug(f"    -> Skipping extension element: {elem_name} (type: {elem_type})")
-                    continue
-                
-                # Collection class - modeled as owl:Class (Pattern 007 requirement)
-                # Use dynamic hierarchy to determine inheritance (supports multiple parents)
-                parent_types = self._determine_collection_parents(name)
-                if parent_types:
-                    # Multiple inheritance: create multiple rdfs:subClassOf statements
-                    statements.append(f"""mismo:{name} a owl:Class ;
-    rdfs:label "{name}" ;
-    rdfs:comment {self._format_comment_for_ttl(f"A collection containing multiple {elem_name} instances. {comment}")} .""")
-                    
-                    # Add each parent as a separate rdfs:subClassOf statement
-                    for parent_type in parent_types:
-                        statements.append(f"mismo:{name} rdfs:subClassOf mismo:{parent_type} .")
-                        logger.debug(f"      -> {name} inherits from {parent_type}")
-                else:
-                    statements.append(f"""mismo:{name} a owl:Class ;
-    rdfs:label "{name}" ;
-    rdfs:comment {self._format_comment_for_ttl(f"A collection containing multiple {elem_name} instances. {comment}")} ;
-    rdfs:subClassOf owl:Thing .""")
-                    logger.debug(f"      -> {name} inherits from owl:Thing")
-                
-                # Contained class - always owl:Class with proper hierarchy (Pattern 007 requirement)
-                statements.append(f"""mismo:{elem_name} a owl:Class ;
+                # Since we know elem_type is an owl:Class, we can generate contained class + property
+                # Contained class - always owl:Class with proper hierarchy
+                contained_class_ttl = f"""mismo:{elem_name} a owl:Class ;
         rdfs:label "{elem_name}" ;
         rdfs:comment {self._format_comment_for_ttl(f"Individual {elem_name} element contained in {name} collection")} ;
-        rdfs:subClassOf mismo:{name} .""")
+        rdfs:subClassOf mismo:{name} ."""
+                statements.append(contained_class_ttl)
+                logger.debug(f"      -> Generated contained class: {elem_name}")
                 
                 # Collection relationship property - establishes containment hierarchy
-                statements.append(f"""mismo:contains{elem_name} a owl:ObjectProperty ;
+                property_ttl = f"""mismo:contains{elem_name} a owl:ObjectProperty ;
         rdfs:label "contains {elem_name}" ;
         rdfs:comment {self._format_comment_for_ttl(f"Relates {name} to individual {elem_name} instances")} ;
         owl:domain mismo:{name} ;
         owl:range mismo:{elem_name} ;
-        rdfs:subPropertyOf rdf:member .""")
+        rdfs:subPropertyOf rdf:member ."""
+                statements.append(property_ttl)
+                logger.debug(f"      -> Generated collection property: contains{elem_name}")
                 
                 # Track the collection-element relationship for hierarchy consistency
                 self.track_collection_element_relationship(name, elem_name)
                 
-                break
-
-        # Special case: MESSAGE is a root container that should always be generated
-        # even if it doesn't contain maxOccurs="unbounded" elements
-        if name == 'MESSAGE' and not has_unbounded_elements:
-            logger.debug(f"    -> {name}: Special case - root container without unbounded elements")
-            statements.append(f"""mismo:{name} a owl:Class ;
-            rdfs:label "{name}" ;
-            rdfs:comment {self._format_comment_for_ttl(f"Root container for MISMO message. {comment}")} ;
-            rdfs:subClassOf owl:Thing .""")
-
-        # Use dynamic hierarchy to determine if this should be a collection class
-        # even if it doesn't contain maxOccurs="unbounded" elements
-        elif not has_unbounded_elements:
-            # Check if this should be a collection based on dynamic hierarchy
-            parent_types = self._determine_collection_parents(name)
-            if parent_types:
-                # Multiple inheritance: create multiple rdfs:subClassOf statements
-                statements.append(f"""mismo:{name} a owl:Class ;
-        rdfs:label "{name}" ;
-        rdfs:comment {self._format_comment_for_ttl(f"Collection class with multiple inheritance. {comment}")} .""")
-                
-                # Add each parent as a separate rdfs:subClassOf statement
-                for parent_type in parent_types:
-                    statements.append(f"mismo:{name} rdfs:subClassOf mismo:{parent_type} .")
-                    logger.debug(f"      -> {name} inherits from {parent_type}")
+                logger.debug(f"      -> Processed owl:Class element: {elem_name}")
             else:
-                logger.debug(f"    -> {name}: No parent found, inheriting from owl:Thing")
-                statements.append(f"""mismo:{name} a owl:Class ;
+                # Handle as DatatypeProperty (for non-owl:Class elements or elements not found in complex_type_info)
+                if elem_type and elem_type in self.complex_type_info:
+                    logger.debug(f"      -> Element {elem_name} is NOT owl:Class type: {elem_type}")
+                else:
+                    logger.debug(f"      -> Element {elem_name} type not found in complex_type_info: {elem_type}")
                 
-        rdfs:label "{name}" ;
-        rdfs:comment {self._format_comment_for_ttl(f"Collection class. {comment}")} ;
-        rdfs:subClassOf owl:Thing .""")
-
+                logger.debug(f"      -> Handling {elem_name} as DatatypeProperty")
+                
+                # DatatypeProperty for simple content
+                property_ttl = f"""mismo:{elem_name} a owl:DatatypeProperty ;
+        rdfs:label "{elem_name}" ;
+        rdfs:comment {self._format_comment_for_ttl(f"Property representing the {elem_name} element")} ;
+        rdfs:domain mismo:{name} ;
+        rdfs:range {self._format_type_reference(elem_type) if elem_type else 'xsd:string'} ."""
+                statements.append(property_ttl)
+                logger.debug(f"      -> Generated DatatypeProperty: {elem_name}")
+                
+                logger.debug(f"      -> Processed DatatypeProperty element: {elem_name}")
+        
+        # Collection class already generated at the beginning
+        
+        # Print generated statements for debugging
+        logger.debug(f"=== Pattern 007 NEW: Completed {name} with {len(statements)} statements ===")
+        logger.debug(f"Generated statements for {name}:")
+        for i, statement in enumerate(statements):
+            logger.debug(f"  Statement {i+1}: {statement}")
+        
         return statements
 
     def transform_pattern_008(self, element: ET.Element) -> List[str]:
@@ -1894,13 +2123,35 @@ mismo:{collection_name} rdfs:subClassOf owl:Thing .""")
         doc = element.find('.//xsd:documentation', self.namespaces)
         comment = doc.text if doc is not None else f"Complex type: {name}"
         
-        # Main class - attributes-only types are typically simple containers
-        class_ttl = f"""mismo:{name} a owl:Class ;
-    rdfs:label "{name}" ;
-    rdfs:comment {self._format_comment_for_ttl(comment)} ;
-    rdfs:subClassOf owl:Thing ."""
-        statements.append(class_ttl)
-        logger.debug(f"Generated Class TTL:\n{self._format_ttl_for_logging(class_ttl)}")
+        # Pattern 009: Complex types with only attributes should be owl:Class
+        # Use dynamic hierarchy to determine inheritance
+        logger.debug(f"      -> Main class {name} follows Pattern 009 -> owl:Class")
+
+        # Find parent types dynamically (supports multiple inheritance)
+        parent_types = self.get_parent_types(name)
+        if parent_types:
+            # Multiple inheritance: create multiple rdfs:subClassOf statements
+            class_ttl = f"""mismo:{name} a owl:Class ;
+            rdfs:label "{name}" ;
+            rdfs:comment {self._format_comment_for_ttl(comment)} ."""
+            statements.append(class_ttl)
+            logger.debug(f"Generated Class TTL:\n{self._format_ttl_for_logging(class_ttl)}")
+            
+            # Add each parent as a separate rdfs:subClassOf statement
+            for parent_type in parent_types:
+                parent_ttl = f"mismo:{name} rdfs:subClassOf mismo:{parent_type} ."
+                statements.append(parent_ttl)
+                logger.debug(f"Generated Parent TTL:\n{self._format_ttl_for_logging(parent_ttl)}")
+                logger.debug(f"      -> {name} inherits from {parent_type}")
+        else:
+            # No parent found, inherit from owl:Thing
+            class_ttl = f"""mismo:{name} a owl:Class ;
+            rdfs:label "{name}" ;
+            rdfs:comment {self._format_comment_for_ttl(comment)} ;
+            rdfs:subClassOf owl:Thing ."""
+            statements.append(class_ttl)
+            logger.debug(f"Generated Class TTL:\n{self._format_ttl_for_logging(class_ttl)}")
+            logger.debug(f"      -> {name} inherits from owl:Thing")
         
         # Handle attributes
         for attr in element.findall('.//xsd:attribute', self.namespaces):
@@ -1975,8 +2226,12 @@ mismo:{collection_name} rdfs:subClassOf owl:Thing .""")
             statements = self.transform_pattern_006(element)
             
         elif pattern_type == "Pattern 007":
-            logger.info(f"    -> Processing Pattern 007: Collection Type")
-            statements = self.transform_pattern_007(element)
+            if self.disable_pattern_007:
+                logger.info(f"    -> SKIPPING Pattern 007: Collection Type (disabled via command line)")
+                statements = []
+            else:
+                logger.info(f"    -> Processing Pattern 007: Collection Type")
+                statements = self.transform_pattern_007_new(element)
             
         elif pattern_type == "Pattern 008":
             logger.info(f"    -> Processing Pattern 008: Attribute Groups (IGNORED)")
@@ -2006,90 +2261,90 @@ mismo:{collection_name} rdfs:subClassOf owl:Thing .""")
         logger.info(f"=== Completed processing element: {name} ===\n")
         return statements
 
-    def transform_element(self, element: ET.Element) -> List[str]:
-        """
-        Transform a single XSD element based on its pattern.
+    # def transform_element(self, element: ET.Element) -> List[str]:
+    #     """
+    #     Transform a single XSD element based on its pattern.
         
-        Args:
-            element: XSD element to transform
+    #     Args:
+    #         element: XSD element to transform
             
-        Returns:
-            List of TTL statements
-        """
-        name = element.get('name', 'UNNAMED')
-        tag = element.tag
+    #     Returns:
+    #         List of TTL statements
+    #     """
+    #     name = element.get('name', 'UNNAMED')
+    #     tag = element.tag
         
-        logger.info(f"=== Processing element: {name} (tag: {tag}) ===")
+    #     logger.info(f"=== Processing element: {name} (tag: {tag}) ===")
         
-        # Check if element should be ignored (includes Pattern 005: Extension patterns)
-        if self.should_ignore_element(element):
-            # Check if it's a Pattern 005 case
-            if element.tag.endswith('EXTENSION') or self._is_extension_pattern(element):
-                logger.info(f"  -> Element {name} is marked for IGNORE - Pattern 005: Extension pattern")
-            else:
-                logger.info(f"  -> Element {name} is marked for IGNORE (extension/attribute group)")
-            return []
+    #     # Check if element should be ignored (includes Pattern 005: Extension patterns)
+    #     if self.should_ignore_element(element):
+    #         # Check if it's a Pattern 005 case
+    #         if element.tag.endswith('EXTENSION') or self._is_extension_pattern(element):
+    #             logger.info(f"  -> Element {name} is marked for IGNORE - Pattern 005: Extension pattern")
+    #         else:
+    #             logger.info(f"  -> Element {name} is marked for IGNORE (extension/attribute group)")
+    #         return []
         
-        logger.info(f"  -> Element {name} will be processed")
-        statements = []
+    #     logger.info(f"  -> Element {name} will be processed")
+    #     statements = []
         
-        # Determine element type and transformation pattern
-        # Pattern 006: Complex types with elements and attributes (EXTENSION elements are ignored)
-        if tag.endswith('simpleType'):
-            logger.info(f"  -> Detected SIMPLE TYPE pattern for {name}")
+    #     # Determine element type and transformation pattern
+    #     # Pattern 006: Complex types with elements and attributes (EXTENSION elements are ignored)
+    #     if tag.endswith('simpleType'):
+    #         logger.info(f"  -> Detected SIMPLE TYPE pattern for {name}")
             
-            # Check if it's a union type (Pattern 001.1)
-            if element.find('.//xsd:union', self.namespaces) is not None:
-                logger.info(f"    -> Pattern 001.1: UNION TYPE detected")
-                statements.extend(self.transform_union_type(element))
-                logger.info(f"    -> Generated {len(statements)} TTL statements for union type")
-            # Check if it's an enumeration
-            elif element.find('.//xsd:enumeration', self.namespaces) is not None:
-                logger.info(f"    -> Pattern 002: ENUMERATION type detected")
-                statements.extend(self.transform_enumeration(element))
-                logger.info(f"    -> Generated {len(statements)} TTL statements for enumeration")
-            else:
-                logger.info(f"    -> Pattern 001: SIMPLE TYPE with restrictions detected")
-                statements.extend(self.transform_simple_type(element))
-                logger.info(f"    -> Generated {len(statements)} TTL statements for simple type")
+    #         # Check if it's a union type (Pattern 001.1)
+    #         if element.find('.//xsd:union', self.namespaces) is not None:
+    #             logger.info(f"    -> Pattern 001.1: UNION TYPE detected")
+    #             statements.extend(self.transform_union_type(element))
+    #             logger.info(f"    -> Generated {len(statements)} TTL statements for union type")
+    #         # Check if it's an enumeration
+    #         elif element.find('.//xsd:enumeration', self.namespaces) is not None:
+    #             logger.info(f"    -> Pattern 002: ENUMERATION type detected")
+    #             statements.extend(self.transform_enumeration(element))
+    #             logger.info(f"    -> Generated {len(statements)} TTL statements for enumeration")
+    #         else:
+    #             logger.info(f"    -> Pattern 001: SIMPLE TYPE with restrictions detected")
+    #             statements.extend(self.transform_simple_type(element))
+    #             logger.info(f"    -> Generated {len(statements)} TTL statements for simple type")
                 
-        elif tag.endswith('complexType'):
-            logger.info(f"  -> Detected COMPLEX TYPE pattern for {name}")
+    #     elif tag.endswith('complexType'):
+    #         logger.info(f"  -> Detected COMPLEX TYPE pattern for {name}")
             
-            # Check for different complex type patterns
-            if element.find('.//xsd:simpleContent', self.namespaces) is not None:
-                logger.info(f"    -> Pattern 004: COMPLEX TYPE with SIMPLE CONTENT detected")
-                logger.debug(f"      -> Found simpleContent, checking for extension and attributes...")
-                statements.extend(self.transform_complex_type_simple_content(element))
-                logger.info(f"    -> Generated {len(statements)} TTL statements for simple content")
+    #         # Check for different complex type patterns
+    #         if element.find('.//xsd:simpleContent', self.namespaces) is not None:
+    #             logger.info(f"    -> Pattern 004: COMPLEX TYPE with SIMPLE CONTENT detected")
+    #             logger.debug(f"      -> Found simpleContent, checking for extension and attributes...")
+    #             statements.extend(self.transform_complex_type_simple_content(element))
+    #             logger.info(f"    -> Generated {len(statements)} TTL statements for simple content")
                 
-            elif self.is_collection_type(element):
-                logger.info(f"    -> Pattern 007: COLLECTION TYPE detected")
-                logger.debug(f"      -> Found collection with maxOccurs='unbounded', applying collection pattern...")
-                statements.extend(self.transform_collection_type(element))
-                logger.info(f"    -> Generated {len(statements)} TTL statements for collection")
-            elif self.has_only_attributes(element):
-                logger.info(f"    -> Pattern 009: COMPLEX TYPE with ATTRIBUTES ONLY detected")
-                statements.extend(self.transform_complex_type_attributes_only(element))
-                logger.info(f"    -> Generated {len(statements)} TTL statements for attributes only")
-            else:
-                logger.info(f"    -> Pattern 006: COMPLEX TYPE with ELEMENTS and ATTRIBUTES detected")
-                logger.debug(f"      -> Found sequence, checking for elements and attributes...")
-                logger.debug(f"      -> {name} will generate properties for all its elements and attributes")
-                statements.extend(self.transform_complex_type_elements(element))
-                logger.info(f"    -> Generated {len(statements)} TTL statements for elements and attributes")
-        else:
-            logger.warning(f"  -> UNKNOWN element type: {tag} for {name}")
-            logger.warning(f"     This element will not be transformed")
+    #         elif self.is_collection_type(element):
+    #             logger.info(f"    -> Pattern 007: COLLECTION TYPE detected")
+    #             logger.debug(f"      -> Found collection with maxOccurs='unbounded', applying collection pattern...")
+    #             statements.extend(self.transform_collection_type(element))
+    #             logger.info(f"    -> Generated {len(statements)} TTL statements for collection")
+    #         elif self.has_only_attributes(element):
+    #             logger.info(f"    -> Pattern 009: COMPLEX TYPE with ATTRIBUTES ONLY detected")
+    #             statements.extend(self.transform_complex_type_attributes_only(element))
+    #             logger.info(f"    -> Generated {len(statements)} TTL statements for attributes only")
+    #         else:
+    #             logger.info(f"    -> Pattern 006: COMPLEX TYPE with ELEMENTS and ATTRIBUTES detected")
+    #             logger.debug(f"      -> Found sequence, checking for elements and attributes...")
+    #             logger.debug(f"      -> {name} will generate properties for all its elements and attributes")
+    #             statements.extend(self.transform_complex_type_elements(element))
+    #             logger.info(f"    -> Generated {len(statements)} TTL statements for elements and attributes")
+    #     else:
+    #         logger.warning(f"  -> UNKNOWN element type: {tag} for {name}")
+    #         logger.warning(f"     This element will not be transformed")
         
-        # Log final results
-        if statements:
-            logger.info(f"  -> SUCCESS: Element {name} transformed with {len(statements)} TTL statements")
-        else:
-            logger.warning(f"  -> WARNING: Element {name} generated no TTL statements")
+    #     # Log final results
+    #     if statements:
+    #         logger.info(f"  -> SUCCESS: Element {name} transformed with {len(statements)} TTL statements")
+    #     else:
+    #         logger.warning(f"  -> WARNING: Element {name} generated no TTL statements")
         
-        logger.info(f"=== Completed processing element: {name} ===\n")
-        return statements
+    #     logger.info(f"=== Completed processing element: {name} ===\n")
+    #     return statements
     
     def transform_xsd(self, xsd_file: str) -> bool:
         """
@@ -2210,6 +2465,23 @@ mismo:{collection_name} rdfs:subClassOf owl:Thing .""")
             logger.error(f"Error writing TTL file: {str(e)}")
             return False
 
+
+
+    def _format_type_reference(self, type_name: str) -> str:
+        """Format a type reference with proper namespace prefix."""
+        if not type_name:
+            return type_name
+        
+        # If it already has a namespace prefix (like xsd:string), return as is
+        if ':' in type_name:
+            logger.debug(f"      -> Type reference '{type_name}' already has namespace prefix")
+            return type_name
+        
+        # If it's a MISMO type without prefix, add the mismo: prefix
+        formatted_type = f"mismo:{type_name}"
+        logger.debug(f"      -> Formatting type reference '{type_name}' -> '{formatted_type}'")
+        return formatted_type
+
 def main():
     """Main function to handle command line arguments and execute the transformer."""
     parser = argparse.ArgumentParser(
@@ -2219,6 +2491,7 @@ def main():
 Examples:
   python transform_mismo_xsd.py --input MISMO_3.6.0_B367.xsd --output mismo_ontology.ttl
   python transform_mismo_xsd.py -i MISMO.xsd -o output.ttl
+  python transform_mismo_xsd.py -i MISMO.xsd -o output.ttl --disable-pattern-007
         """
     )
     
@@ -2240,6 +2513,12 @@ Examples:
         help='Enable verbose logging'
     )
     
+    parser.add_argument(
+        '--disable-pattern-007',
+        action='store_true',
+        help='Disable Pattern 007 processing (Collection types)'
+    )
+    
     args = parser.parse_args()
     
     if args.verbose:
@@ -2251,7 +2530,12 @@ Examples:
         sys.exit(1)
     
     # Initialize transformer
-    transformer = MISMOXSDTransformer()
+    transformer = MISMOXSDTransformer(disable_pattern_007=args.disable_pattern_007)
+    
+    if args.disable_pattern_007:
+        logger.info("Pattern 007 processing is DISABLED")
+    else:
+        logger.info("Pattern 007 processing is ENABLED")
     
     try:
         # Transform XSD
